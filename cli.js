@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-console.log("Scaffy is alive! 🚀")
+console.log('Scaffy is alive! 🚀');

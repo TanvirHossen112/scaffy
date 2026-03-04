@@ -4,7 +4,6 @@ about: Request a new framework plugin
 title: ''
 labels: plugin
 assignees: ''
-
 ---
 
 **Framework Name**
@@ -20,6 +19,10 @@ e.g. pip install django
 How popular is this framework?
 
 **Are you willing to build it?**
+
 - [ ] Yes I'll build it
 - [ ] No, requesting only
+
+```
+
 ```
