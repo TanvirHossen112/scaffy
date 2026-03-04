@@ -1,0 +1,45 @@
+{
+  "name": "scaffy",
+  "version": "0.1.0",
+  "description": "One command. Any framework. Ready to code.",
+  "author": "Md Tanvir Hossen <tanvirhossen112@gmail.com>",
+  "license": "MIT",
+  "bin": {
+    "scaffy": "./cli.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "scaffold",
+    "cli",
+    "framework",
+    "generator",
+    "laravel",
+    "nestjs",
+    "vuejs"
+  ],
+  "scripts": {
+    "start": "node cli.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "figlet": "^1.7.0",
+    "inquirer": "^9.2.0",
+    "ora": "^7.0.1",
+    "semver": "^7.5.4"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.0"
+  }
+}
