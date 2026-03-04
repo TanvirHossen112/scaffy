@@ -1,0 +1,85 @@
+{
+    "version": "1.0.0",
+    "frameworks": [
+      {
+        "name": "Laravel",
+        "alias": ["laravel"],
+        "language": "php",
+        "latest": "v11",
+        "versions": ["v11", "v10"],
+        "path": "php/laravel"
+      },
+      {
+        "name": "Symfony",
+        "alias": ["symfony"],
+        "language": "php",
+        "latest": "v7",
+        "versions": ["v7"],
+        "path": "php/symfony"
+      },
+      {
+        "name": "NestJS",
+        "alias": ["nestjs", "nest"],
+        "language": "javascript",
+        "latest": "v10",
+        "versions": ["v10"],
+        "path": "javascript/nestjs"
+      },
+      {
+        "name": "VueJS",
+        "alias": ["vue", "vuejs"],
+        "language": "javascript",
+        "latest": "v3",
+        "versions": ["v3"],
+        "path": "javascript/vuejs"
+      },
+      {
+        "name": "NextJS",
+        "alias": ["next", "nextjs"],
+        "language": "javascript",
+        "latest": "v14",
+        "versions": ["v14"],
+        "path": "javascript/nextjs"
+      },
+      {
+        "name": "ExpressJS",
+        "alias": ["express", "expressjs"],
+        "language": "javascript",
+        "latest": "v4",
+        "versions": ["v4"],
+        "path": "javascript/expressjs"
+      },
+      {
+        "name": "Django",
+        "alias": ["django"],
+        "language": "python",
+        "latest": "v5",
+        "versions": ["v5"],
+        "path": "python/django"
+      },
+      {
+        "name": "FastAPI",
+        "alias": ["fastapi"],
+        "language": "python",
+        "latest": "v0",
+        "versions": ["v0"],
+        "path": "python/fastapi"
+      },
+      {
+        "name": "Flask",
+        "alias": ["flask"],
+        "language": "python",
+        "latest": "v3",
+        "versions": ["v3"],
+        "path": "python/flask"
+      },
+      {
+        "name": "Gin",
+        "alias": ["gin"],
+        "language": "go",
+        "latest": "v1",
+        "versions": ["v1"],
+        "path": "go/gin"
+      }
+    ]
+  }
