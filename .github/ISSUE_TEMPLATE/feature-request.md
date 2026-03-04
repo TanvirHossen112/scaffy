@@ -4,7 +4,6 @@ about: Suggest a new idea
 title: ''
 labels: feature
 assignees: ''
-
 ---
 
 **Problem it solves**
