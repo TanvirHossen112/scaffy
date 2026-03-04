@@ -1,0 +1,10 @@
+{
+    "name": "Laravel",
+    "alias": ["laravel"],
+    "language": "php",
+    "latest": "v11",
+    "versions": ["v11", "v10"],
+    "description": "The PHP Framework for Web Artisans",
+    "requires": [],
+    "maintainer": "community"
+  }
