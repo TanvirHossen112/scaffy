@@ -57,18 +57,21 @@ Violations may result in removal from the project. If you experience or witness 
 Welcome! Everyone starts somewhere. Here are some suggestions for your first contribution:
 
 **Start small:**
+
 - Look for issues labeled [`good first issue`](https://github.com/TanvirHossen112/scaffy/labels/good%20first%20issue) — these are intentionally approachable
 - Fix a typo or improve clarity in the documentation
 - Add a missing test for an existing function
 - Improve an error message
 
 **Understand the project first:**
+
 - Read this entire document
 - Read the [README](README.md) to understand what Scaffy does
 - Browse the `core/` and `registry/` folders to understand the architecture
 - Run `npm test` and make sure everything passes on your machine
 
 **Don't be afraid to ask:**
+
 - Open a discussion if you're unsure where to start
 - Comment on an issue before working on it — someone may already be working on it
 - Ask questions in your PR — that's what the review process is for
@@ -78,24 +81,31 @@ Welcome! Everyone starts somewhere. Here are some suggestions for your first con
 ## 💡 Ways To Contribute
 
 ### 🐛 Reporting Bugs
+
 Found something broken? Open an issue using the **Bug Report** template. A good bug report includes reproduction steps, your environment details, and the exact error output. See [Reporting Bugs](#-reporting-bugs) for the full guide.
 
 ### ✨ Requesting Features
+
 Have an idea that would make Scaffy better? Open an issue using the **Feature Request** template. Describe the problem you're trying to solve — not just the solution — so we can discuss the best approach together.
 
 ### 🔌 Adding A Framework Plugin
+
 This is the single most impactful contribution you can make. Every new plugin immediately helps developers who use that framework. It takes less than 30 minutes and requires only 3 files. See [Adding A Framework Plugin](#-adding-a-framework-plugin) for the complete step-by-step guide.
 
 ### 🔄 Updating An Existing Plugin
+
 Frameworks release new versions. When they do, someone needs to add support. If you notice a plugin is outdated — create a new version folder inside the existing plugin. Follow the same process as adding a new plugin.
 
 ### 🧪 Writing Tests
+
 More test coverage means more confidence in every release. Browse the `core/tests/` folder and look for functions that have incomplete test coverage. Every new test you write directly protects against future regressions.
 
 ### 📖 Improving Documentation
+
 Clear documentation lowers the barrier to entry for new contributors. Improvements to the README, this guide, inline code comments, and the wiki are always welcome — even small clarity improvements.
 
 ### 🔍 Reviewing Pull Requests
+
 If you have experience with Node.js CLI tools or any of the frameworks Scaffy supports, reviewing open PRs is incredibly valuable. A thoughtful review accelerates the contribution cycle for everyone.
 
 ---
@@ -106,11 +116,11 @@ If you have experience with Node.js CLI tools or any of the frameworks Scaffy su
 
 Make sure you have the following installed before setting up:
 
-| Tool | Minimum Version | Check |
-|------|----------------|-------|
-| Node.js | 18.0.0 | `node --version` |
-| npm | 8.0.0 | `npm --version` |
-| Git | Any recent | `git --version` |
+| Tool    | Minimum Version | Check            |
+| ------- | --------------- | ---------------- |
+| Node.js | 18.0.0          | `node --version` |
+| npm     | 8.0.0           | `npm --version`  |
+| Git     | Any recent      | `git --version`  |
 
 ### Step-by-Step Setup
 
@@ -134,6 +144,7 @@ git remote add upstream https://github.com/YOUR-USERNAME/scaffy.git
 ```
 
 Verify your remotes:
+
 ```bash
 git remote -v
 # origin    https://github.com/YOUR-GITHUB-USERNAME/scaffy.git (fetch)
@@ -272,9 +283,9 @@ Please follow this pattern in all core contributions.
 
 Scaffy uses a simplified Git Flow. There are two permanent branches:
 
-| Branch | Purpose |
-|--------|---------|
-| `main` | Stable, production-ready code. Only release merges. |
+| Branch    | Purpose                                              |
+| --------- | ---------------------------------------------------- |
+| `main`    | Stable, production-ready code. Only release merges.  |
 | `develop` | Integration branch. All feature branches merge here. |
 
 **Always branch from `develop`. Never branch from `main`.**
@@ -290,15 +301,15 @@ git checkout -b your-branch-name
 
 Use these prefixes consistently. They make the branch list readable and help CI know what kind of change is incoming.
 
-| Prefix | Use For | Example |
-|--------|---------|---------|
-| `feature/` | New functionality | `feature/scaffold-list-command` |
-| `bugfix/` | Bug fixes | `bugfix/detector-version-crash` |
-| `plugin/` | New framework plugins | `plugin/django-v5` |
-| `test/` | Adding or improving tests | `test/registry-coverage` |
-| `docs/` | Documentation only | `docs/improve-plugin-guide` |
+| Prefix      | Use For                              | Example                            |
+| ----------- | ------------------------------------ | ---------------------------------- |
+| `feature/`  | New functionality                    | `feature/scaffold-list-command`    |
+| `bugfix/`   | Bug fixes                            | `bugfix/detector-version-crash`    |
+| `plugin/`   | New framework plugins                | `plugin/django-v5`                 |
+| `test/`     | Adding or improving tests            | `test/registry-coverage`           |
+| `docs/`     | Documentation only                   | `docs/improve-plugin-guide`        |
 | `refactor/` | Code improvements, no feature change | `refactor/executor-error-handling` |
-| `ci/` | CI/CD configuration | `ci/add-codecov-reporting` |
+| `ci/`       | CI/CD configuration                  | `ci/add-codecov-reporting`         |
 
 **Use kebab-case. Be descriptive but concise.**
 
@@ -332,17 +343,17 @@ Scaffy follows the [Conventional Commits](https://www.conventionalcommits.org) s
 
 ### Types
 
-| Type | When To Use |
-|------|-------------|
-| `feat` | A new feature or user-facing capability |
-| `fix` | A bug fix |
-| `test` | Adding or updating tests |
-| `docs` | Documentation changes only |
-| `chore` | Setup, config, dependencies, tooling |
+| Type       | When To Use                                |
+| ---------- | ------------------------------------------ |
+| `feat`     | A new feature or user-facing capability    |
+| `fix`      | A bug fix                                  |
+| `test`     | Adding or updating tests                   |
+| `docs`     | Documentation changes only                 |
+| `chore`    | Setup, config, dependencies, tooling       |
 | `refactor` | Code restructuring with no behavior change |
-| `plugin` | A new or updated framework plugin |
-| `ci` | Changes to CI/CD configuration |
-| `perf` | Performance improvements |
+| `plugin`   | A new or updated framework plugin          |
+| `ci`       | Changes to CI/CD configuration             |
+| `perf`     | Performance improvements                   |
 
 ### Rules
 
@@ -553,30 +564,30 @@ touch registry/python/django/v5/tests/scaffold.test.js
 
 **Field reference:**
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | ✅ | Display name shown to users |
-| `alias` | string[] | ✅ | Names users can type: `scaffy django` |
-| `language` | string | ✅ | Programming language — must match folder name |
-| `latest` | string | ✅ | The default version (must exist in `versions`) |
-| `versions` | string[] | ✅ | All supported versions — must match folder names |
-| `description` | string | ✅ | One-line description of the framework |
-| `requires` | object[] | ✅ | Tools that must be installed before scaffolding |
-| `maintainer` | string | ✅ | Use `"community"` for community-added plugins |
+| Field         | Type     | Required | Description                                      |
+| ------------- | -------- | -------- | ------------------------------------------------ |
+| `name`        | string   | ✅       | Display name shown to users                      |
+| `alias`       | string[] | ✅       | Names users can type: `scaffy django`            |
+| `language`    | string   | ✅       | Programming language — must match folder name    |
+| `latest`      | string   | ✅       | The default version (must exist in `versions`)   |
+| `versions`    | string[] | ✅       | All supported versions — must match folder names |
+| `description` | string   | ✅       | One-line description of the framework            |
+| `requires`    | object[] | ✅       | Tools that must be installed before scaffolding  |
+| `maintainer`  | string   | ✅       | Use `"community"` for community-added plugins    |
 
 **Requirement object reference:**
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `tool` | string | ✅ | Tool name displayed to user |
-| `checkCommand` | string | ✅ | Shell command to check if tool exists |
-| `parseVersion` | string | ⬜ | Regex to extract version number from output |
-| `minVersion` | string | ⬜ | Minimum semver version required |
-| `installGuide` | object | ✅ | Per-OS install instructions |
-| `installGuide.mac` | string | ⬜ | macOS install command |
-| `installGuide.linux` | string | ⬜ | Linux install command |
-| `installGuide.windows` | string | ⬜ | Windows install URL or command |
-| `installGuide.docs` | string | ✅ | Official documentation URL — always required |
+| Field                  | Type   | Required | Description                                  |
+| ---------------------- | ------ | -------- | -------------------------------------------- |
+| `tool`                 | string | ✅       | Tool name displayed to user                  |
+| `checkCommand`         | string | ✅       | Shell command to check if tool exists        |
+| `parseVersion`         | string | ⬜       | Regex to extract version number from output  |
+| `minVersion`           | string | ⬜       | Minimum semver version required              |
+| `installGuide`         | object | ✅       | Per-OS install instructions                  |
+| `installGuide.mac`     | string | ⬜       | macOS install command                        |
+| `installGuide.linux`   | string | ⬜       | Linux install command                        |
+| `installGuide.windows` | string | ⬜       | Windows install URL or command               |
+| `installGuide.docs`    | string | ✅       | Official documentation URL — always required |
 
 ### Step 5 — Write questions.js
 
@@ -594,12 +605,12 @@ module.exports = [
     message: 'Initial app name?',
     default: 'core',
     validate: input => {
-      if (!input.trim()) return 'App name is required'
+      if (!input.trim()) return 'App name is required';
       if (!/^[a-z0-9_]+$/.test(input)) {
-        return 'Use only lowercase letters, numbers, and underscores'
+        return 'Use only lowercase letters, numbers, and underscores';
       }
-      return true
-    }
+      return true;
+    },
   },
   {
     type: 'list',
@@ -608,22 +619,23 @@ module.exports = [
     choices: [
       { name: 'SQLite (recommended for development)', value: 'sqlite3' },
       { name: 'PostgreSQL', value: 'postgresql' },
-      { name: 'MySQL', value: 'mysql' }
+      { name: 'MySQL', value: 'mysql' },
     ],
-    default: 'sqlite3'
+    default: 'sqlite3',
   },
   {
     type: 'confirm',
     name: 'docker',
     message: 'Add Docker support?',
-    default: false
-  }
-]
+    default: false,
+  },
+];
 ```
 
 **Supported question types:** `input`, `list`, `checkbox`, `confirm`, `password`
 
 **Always include:**
+
 - A `validate` function on `input` questions
 - A sensible `default` value on every question
 - Descriptive `name` labels in `list` choices
@@ -638,29 +650,23 @@ module.exports = [
 // registry/python/django/v5/scaffold.js
 
 module.exports = async (answers, utils) => {
-  const { projectName, appName, database, docker } = answers
+  const { projectName, appName, database, docker } = answers;
 
   // ── Step 1: Install Django via official pip ───────────
-  await utils.run('pip3 install django')
+  await utils.run('pip3 install django');
 
   // ── Step 2: Create project via official django-admin ──
-  await utils.run(
-    `django-admin startproject ${projectName}`
-  )
+  await utils.run(`django-admin startproject ${projectName}`);
 
   // ── Step 3: Create the initial app ────────────────────
-  await utils.runInProject(projectName,
-    `python manage.py startapp ${appName}`
-  )
+  await utils.runInProject(projectName, `python manage.py startapp ${appName}`);
 
   // ── Step 4: Configure database in settings.py ─────────
   if (database !== 'sqlite3') {
     await utils.appendToFile(
       `${projectName}/requirements.txt`,
-      database === 'postgresql'
-        ? 'psycopg2-binary\n'
-        : 'mysqlclient\n'
-    )
+      database === 'postgresql' ? 'psycopg2-binary\n' : 'mysqlclient\n'
+    );
   }
 
   // ── Step 5: Add Docker support if requested ───────────
@@ -674,9 +680,9 @@ module.exports = async (answers, utils) => {
         'RUN pip install -r requirements.txt',
         'COPY . .',
         'EXPOSE 8000',
-        'CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]'
+        'CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]',
       ].join('\n')
-    )
+    );
   }
 
   // ── Done ──────────────────────────────────────────────
@@ -684,21 +690,21 @@ module.exports = async (answers, utils) => {
     ✅ Django v5 project ready!
     📁 cd ${projectName}
     🚀 python manage.py runserver
-  `)
-}
+  `);
+};
 ```
 
 **The `utils` API — everything available to scaffold.js:**
 
-| Method | Signature | Description |
-|--------|-----------|-------------|
-| `run` | `run(command)` | Run a shell command in the current directory |
+| Method         | Signature                            | Description                                           |
+| -------------- | ------------------------------------ | ----------------------------------------------------- |
+| `run`          | `run(command)`                       | Run a shell command in the current directory          |
 | `runInProject` | `runInProject(projectName, command)` | Run a command inside the newly created project folder |
-| `setEnv` | `setEnv(projectName, vars)` | Set variables in the project's `.env` file |
-| `appendToFile` | `appendToFile(filePath, content)` | Append content to any file |
-| `log` | `log(message)` | Print an info message to the terminal |
-| `success` | `success(message)` | Print a success message (green) |
-| `warn` | `warn(message)` | Print a warning message (yellow) |
+| `setEnv`       | `setEnv(projectName, vars)`          | Set variables in the project's `.env` file            |
+| `appendToFile` | `appendToFile(filePath, content)`    | Append content to any file                            |
+| `log`          | `log(message)`                       | Print an info message to the terminal                 |
+| `success`      | `success(message)`                   | Print a success message (green)                       |
+| `warn`         | `warn(message)`                      | Print a warning message (yellow)                      |
 
 ### Step 7 — Register In index.json
 
@@ -726,17 +732,16 @@ Every plugin **must** ship with tests. Tests verify that your `scaffold.js` gene
 ```javascript
 // registry/python/django/v5/tests/scaffold.test.js
 
-const scaffold = require('../scaffold')
+const scaffold = require('../scaffold');
 
 // ─── Mock Utils Factory ───────────────────────────────────
 // Creates a fake utils object that records all calls
 // instead of actually running shell commands
 const createMockUtils = () => {
-  const calls = []
+  const calls = [];
 
   const utils = {
-    run: async cmd =>
-      calls.push({ type: 'run', context: 'root', cmd }),
+    run: async cmd => calls.push({ type: 'run', context: 'root', cmd }),
 
     runInProject: async (project, cmd) =>
       calls.push({ type: 'run', context: project, cmd }),
@@ -744,136 +749,105 @@ const createMockUtils = () => {
     appendToFile: async (path, content) =>
       calls.push({ type: 'file', path, content }),
 
-    setEnv: async (project, vars) =>
-      calls.push({ type: 'env', project, vars }),
+    setEnv: async (project, vars) => calls.push({ type: 'env', project, vars }),
 
     success: () => {},
     log: () => {},
-    warn: () => {}
-  }
+    warn: () => {},
+  };
 
   return {
     utils,
     // Helper: did a command matching this string run?
-    ran: partial =>
-      calls.some(c => c.cmd && c.cmd.includes(partial)),
+    ran: partial => calls.some(c => c.cmd && c.cmd.includes(partial)),
     // Helper: was a file written matching this path?
-    wrote: partial =>
-      calls.some(c => c.path && c.path.includes(partial)),
+    wrote: partial => calls.some(c => c.path && c.path.includes(partial)),
     // Access all recorded calls for detailed assertions
-    calls: () => calls
-  }
-}
+    calls: () => calls,
+  };
+};
 
 // ─── Default Answers ─────────────────────────────────────
 const defaultAnswers = {
   projectName: 'test-project',
   appName: 'core',
   database: 'sqlite3',
-  docker: false
-}
+  docker: false,
+};
 
 // ─── Tests ───────────────────────────────────────────────
 describe('Django v5 Scaffold', () => {
-
   describe('always runs', () => {
-
     test('installs django via pip', async () => {
-      const mock = createMockUtils()
-      await scaffold(defaultAnswers, mock.utils)
-      expect(mock.ran('pip3 install django')).toBe(true)
-    })
+      const mock = createMockUtils();
+      await scaffold(defaultAnswers, mock.utils);
+      expect(mock.ran('pip3 install django')).toBe(true);
+    });
 
     test('creates project via django-admin', async () => {
-      const mock = createMockUtils()
-      await scaffold(defaultAnswers, mock.utils)
-      expect(
-        mock.ran('django-admin startproject test-project')
-      ).toBe(true)
-    })
+      const mock = createMockUtils();
+      await scaffold(defaultAnswers, mock.utils);
+      expect(mock.ran('django-admin startproject test-project')).toBe(true);
+    });
 
     test('creates initial app', async () => {
-      const mock = createMockUtils()
-      await scaffold(defaultAnswers, mock.utils)
-      expect(mock.ran('startapp core')).toBe(true)
-    })
-
-  })
+      const mock = createMockUtils();
+      await scaffold(defaultAnswers, mock.utils);
+      expect(mock.ran('startapp core')).toBe(true);
+    });
+  });
 
   describe('database configuration', () => {
-
     test('does not write requirements.txt for sqlite', async () => {
-      const mock = createMockUtils()
-      await scaffold(
-        { ...defaultAnswers, database: 'sqlite3' },
-        mock.utils
-      )
-      expect(mock.wrote('requirements.txt')).toBe(false)
-    })
+      const mock = createMockUtils();
+      await scaffold({ ...defaultAnswers, database: 'sqlite3' }, mock.utils);
+      expect(mock.wrote('requirements.txt')).toBe(false);
+    });
 
     test('writes psycopg2 for postgresql', async () => {
-      const mock = createMockUtils()
-      await scaffold(
-        { ...defaultAnswers, database: 'postgresql' },
-        mock.utils
-      )
-      const file = mock.calls().find(
-        c => c.path && c.path.includes('requirements.txt')
-      )
-      expect(file).toBeDefined()
-      expect(file.content).toContain('psycopg2-binary')
-    })
+      const mock = createMockUtils();
+      await scaffold({ ...defaultAnswers, database: 'postgresql' }, mock.utils);
+      const file = mock
+        .calls()
+        .find(c => c.path && c.path.includes('requirements.txt'));
+      expect(file).toBeDefined();
+      expect(file.content).toContain('psycopg2-binary');
+    });
 
     test('writes mysqlclient for mysql', async () => {
-      const mock = createMockUtils()
-      await scaffold(
-        { ...defaultAnswers, database: 'mysql' },
-        mock.utils
-      )
-      const file = mock.calls().find(
-        c => c.path && c.path.includes('requirements.txt')
-      )
-      expect(file).toBeDefined()
-      expect(file.content).toContain('mysqlclient')
-    })
-
-  })
+      const mock = createMockUtils();
+      await scaffold({ ...defaultAnswers, database: 'mysql' }, mock.utils);
+      const file = mock
+        .calls()
+        .find(c => c.path && c.path.includes('requirements.txt'));
+      expect(file).toBeDefined();
+      expect(file.content).toContain('mysqlclient');
+    });
+  });
 
   describe('docker support', () => {
-
     test('does not create Dockerfile when docker is false', async () => {
-      const mock = createMockUtils()
-      await scaffold(
-        { ...defaultAnswers, docker: false },
-        mock.utils
-      )
-      expect(mock.wrote('Dockerfile')).toBe(false)
-    })
+      const mock = createMockUtils();
+      await scaffold({ ...defaultAnswers, docker: false }, mock.utils);
+      expect(mock.wrote('Dockerfile')).toBe(false);
+    });
 
     test('creates Dockerfile when docker is true', async () => {
-      const mock = createMockUtils()
-      await scaffold(
-        { ...defaultAnswers, docker: true },
-        mock.utils
-      )
-      expect(mock.wrote('Dockerfile')).toBe(true)
-    })
+      const mock = createMockUtils();
+      await scaffold({ ...defaultAnswers, docker: true }, mock.utils);
+      expect(mock.wrote('Dockerfile')).toBe(true);
+    });
 
     test('Dockerfile exposes port 8000', async () => {
-      const mock = createMockUtils()
-      await scaffold(
-        { ...defaultAnswers, docker: true },
-        mock.utils
-      )
-      const dockerfile = mock.calls().find(
-        c => c.path && c.path.includes('Dockerfile')
-      )
-      expect(dockerfile.content).toContain('EXPOSE 8000')
-    })
-
-  })
-
-})
+      const mock = createMockUtils();
+      await scaffold({ ...defaultAnswers, docker: true }, mock.utils);
+      const dockerfile = mock
+        .calls()
+        .find(c => c.path && c.path.includes('Dockerfile'));
+      expect(dockerfile.content).toContain('EXPOSE 8000');
+    });
+  });
+});
 ```
 
 **Test coverage requirements for plugins:**
@@ -905,6 +879,7 @@ git push origin plugin/django-v5
 ```
 
 Open a PR against `develop` using the PR template. In the description, explain:
+
 - What framework you added
 - What questions it asks
 - What official commands it runs
@@ -949,47 +924,47 @@ Scaffy enforces a minimum of **80% coverage** on branches, functions, lines, and
 ```javascript
 // ✅ Descriptive, specific test names
 describe('findFramework()', () => {
-  test('returns null when query does not match any framework', () => {})
-  test('finds framework by exact name case-insensitively', () => {})
-  test('finds framework by alias', () => {})
-})
+  test('returns null when query does not match any framework', () => {});
+  test('finds framework by exact name case-insensitively', () => {});
+  test('finds framework by alias', () => {});
+});
 
 // ❌ Vague, unhelpful test names
 describe('findFramework', () => {
-  test('works', () => {})
-  test('test 1', () => {})
-  test('handles edge case', () => {})
-})
+  test('works', () => {});
+  test('test 1', () => {});
+  test('handles edge case', () => {});
+});
 ```
 
 ```javascript
 // ✅ Test one thing per test
 test('returns null for unknown framework', () => {
-  const result = findFramework('unknownxyz')
-  expect(result).toBeNull()
-})
+  const result = findFramework('unknownxyz');
+  expect(result).toBeNull();
+});
 
 // ❌ Testing multiple unrelated things in one test
 test('framework stuff', () => {
-  expect(findFramework('laravel').name).toBe('Laravel')
-  expect(findFramework('unknownxyz')).toBeNull()
-  expect(searchFrameworks('php').length).toBeGreaterThan(0)
-})
+  expect(findFramework('laravel').name).toBe('Laravel');
+  expect(findFramework('unknownxyz')).toBeNull();
+  expect(searchFrameworks('php').length).toBeGreaterThan(0);
+});
 ```
 
 ```javascript
 // ✅ Use beforeEach for shared setup
 describe('Registry', () => {
-  let frameworks
+  let frameworks;
 
   beforeEach(() => {
-    frameworks = getFrameworks()
-  })
+    frameworks = getFrameworks();
+  });
 
   test('returns at least one framework', () => {
-    expect(frameworks.length).toBeGreaterThan(0)
-  })
-})
+    expect(frameworks.length).toBeGreaterThan(0);
+  });
+});
 ```
 
 ---
@@ -1004,14 +979,14 @@ Scaffy uses CommonJS. This is a strict requirement, not a preference.
 
 ```javascript
 // ✅ Always use require/module.exports
-const chalk = require('chalk')
-const { findFramework } = require('./registry')
+const chalk = require('chalk');
+const { findFramework } = require('./registry');
 
-module.exports = { findFramework, searchFrameworks }
+module.exports = { findFramework, searchFrameworks };
 
 // ❌ Never use ESM syntax
-import chalk from 'chalk'
-export const findFramework = () => {}
+import chalk from 'chalk';
+export const findFramework = () => {};
 ```
 
 Why? Jest works natively with CommonJS. ESM requires additional configuration that creates friction for contributors. Every major Node.js CLI tool — ESLint, Prettier, create-react-app — uses CommonJS.
@@ -1024,12 +999,12 @@ All code in `core/` must be written as pure functions:
 // ✅ Pure function — testable in isolation
 const formatFrameworkLine = framework =>
   chalk.white(`  • ${framework.name}`) +
-  chalk.gray(` (${framework.alias.join(', ')})`)
+  chalk.gray(` (${framework.alias.join(', ')})`);
 
 // ❌ Class — harder to test, more boilerplate
 class FrameworkFormatter {
   format(framework) {
-    return chalk.white(`  • ${framework.name}`)
+    return chalk.white(`  • ${framework.name}`);
   }
 }
 ```
@@ -1038,13 +1013,13 @@ class FrameworkFormatter {
 
 ```javascript
 // Functions — camelCase, verb-first
-const findFramework = () => {}
-const buildVersionChoices = () => {}
-const formatToolStatus = () => {}
+const findFramework = () => {};
+const buildVersionChoices = () => {};
+const formatToolStatus = () => {};
 
 // Constants — SCREAMING_SNAKE_CASE
-const REGISTRY_PATH = path.join(__dirname, '..', 'registry')
-const INDEX_PATH = path.join(REGISTRY_PATH, 'index.json')
+const REGISTRY_PATH = path.join(__dirname, '..', 'registry');
+const INDEX_PATH = path.join(REGISTRY_PATH, 'index.json');
 
 // Files — camelCase
 // detector.js, registry.js, mockRunner.js
@@ -1065,6 +1040,7 @@ const INDEX_PATH = path.join(REGISTRY_PATH, 'index.json')
 A well-written bug report dramatically reduces the time it takes to investigate and fix the issue. Please use the **Bug Report** issue template and include all of the following:
 
 **Environment information:**
+
 ```bash
 # Run these and paste the output
 node --version
@@ -1081,7 +1057,7 @@ ver               # Windows
 
 **Error output:** Paste the complete error output — not a screenshot.
 
-A bug report that says *"it doesn't work"* will be closed immediately. A bug report with full reproduction steps will be fixed fast.
+A bug report that says _"it doesn't work"_ will be closed immediately. A bug report with full reproduction steps will be fixed fast.
 
 ---
 
@@ -1113,6 +1089,7 @@ Stuck? Not sure where to start? There are several ways to get help:
 - **Comment on the issue** — if you're planning to work on something, say so first — someone may already be working on it and can save you duplicated effort
 
 When asking for help, always include:
+
 - What you were trying to do
 - What you tried
 - What happened instead

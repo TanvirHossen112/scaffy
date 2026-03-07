@@ -88,13 +88,13 @@ One command. A few questions. Ready to code.
 
 Existing scaffolding tools are framework-specific, opinionated, and go stale fast. Scaffy takes a fundamentally different approach.
 
-|                             | Traditional Scaffolding        | Scaffy                              |
-|-----------------------------|-------------------------------|-------------------------------------|
-| **Multi-framework support** | ❌ One tool per framework      | ✅ Every framework, one tool        |
-| **Always up to date**       | ❌ Stores stale templates      | ✅ Uses official CLI commands       |
-| **Requirement checking**    | ❌ Breaks halfway through      | ✅ Validates before starting        |
-| **Community extensible**    | ❌ Closed, maintainer-only     | ✅ Add any framework in 3 files     |
-| **Version management**      | ❌ Usually locked to one       | ✅ Multiple versions per framework  |
+|                             | Traditional Scaffolding    | Scaffy                             |
+| --------------------------- | -------------------------- | ---------------------------------- |
+| **Multi-framework support** | ❌ One tool per framework  | ✅ Every framework, one tool       |
+| **Always up to date**       | ❌ Stores stale templates  | ✅ Uses official CLI commands      |
+| **Requirement checking**    | ❌ Breaks halfway through  | ✅ Validates before starting       |
+| **Community extensible**    | ❌ Closed, maintainer-only | ✅ Add any framework in 3 files    |
+| **Version management**      | ❌ Usually locked to one   | ✅ Multiple versions per framework |
 
 ---
 
@@ -219,20 +219,16 @@ Scaffy does **not** store template files. Instead, `scaffold.js` calls the frame
 ```javascript
 // registry/php/laravel/v11/scaffold.js
 module.exports = async (answers, utils) => {
-  const { projectName, starterKit, database } = answers
+  const { projectName, starterKit, database } = answers;
 
   // Step 1 — Official Laravel installer
-  await utils.run(
-    `composer create-project laravel/laravel ${projectName}`
-  )
+  await utils.run(`composer create-project laravel/laravel ${projectName}`);
 
   // Step 2 — Layered on top with your choices
   if (starterKit === 'Breeze') {
-    await utils.runInProject(projectName,
-      `php artisan breeze:install`
-    )
+    await utils.runInProject(projectName, `php artisan breeze:install`);
   }
-}
+};
 ```
 
 When a new framework version releases tomorrow, a community member can add support in minutes — with zero changes to Scaffy's core.
