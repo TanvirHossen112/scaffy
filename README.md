@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=00D4FF&center=true&vCenter=true&width=600&lines=Scaffy+%F0%9F%9A%80;One+Command.+Any+Framework." alt="Scaffy" />
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=30&pause=1000&color=3FA1FF&width=450&lines=One+Command+Any+Framework)](https://git.io/typing-svg)
 
 <p align="center">
   <strong>The universal CLI scaffolding tool for modern developers.</strong><br/>
