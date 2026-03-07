@@ -36,7 +36,7 @@
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
     "figlet": "^1.10.0",
-    "inquirer": "^9.3.8",
+    "inquirer": "^8.2.7",
     "ora": "^7.0.1",
     "semver": "^7.7.4"
   },
