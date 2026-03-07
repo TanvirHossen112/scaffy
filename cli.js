@@ -1,12 +1,9 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander';
-import chalk from 'chalk';
-import figlet from 'figlet';
-import ora from 'ora';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
+const { Command } = require('commander');
+const chalk = require('chalk');
+const figlet = require('figlet');
+const ora = require('ora');
 const { version } = require('./package.json');
 
 const program = new Command();
