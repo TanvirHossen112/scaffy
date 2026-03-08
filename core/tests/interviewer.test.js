@@ -7,7 +7,6 @@ const {
   handlePromptError,
 } = require('../interviewer');
 
-// ─── Mock framework ────────────────────────────────────
 const mockFramework = {
   name: 'Laravel',
   language: 'php',
