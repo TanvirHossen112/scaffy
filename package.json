@@ -51,7 +51,7 @@
     "prettier": "^3.8.1"
   },
   "lint-staged": {
-    "*.js": [
+    "!(jest.config).js": [
       "eslint --fix",
       "prettier --write",
       "jest --bail --findRelatedTests"
