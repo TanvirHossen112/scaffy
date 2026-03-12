@@ -7,15 +7,28 @@ const runCli = command => {
     const output = execSync(
       `node ${path.join(__dirname, '../../cli.js')} ${command}`,
       {
-        stdio: 'pipe',
+        // Capture BOTH stdout and stderr
+        stdio: ['pipe', 'pipe', 'pipe'],
         timeout: 10000,
+        env: {
+          ...process.env,
+          // Force chalk to output colors in CI
+          FORCE_COLOR: '0',
+          CI: 'true',
+        },
       }
-    ).toString();
-    return { success: true, output };
+    );
+    return {
+      success: true,
+      output: output.toString(),
+    };
   } catch (err) {
+    // Combine stdout and stderr — CLI may write to either
+    const stdout = err.stdout ? err.stdout.toString() : '';
+    const stderr = err.stderr ? err.stderr.toString() : '';
     return {
       success: false,
-      output: err.stdout ? err.stdout.toString() : err.message,
+      output: stdout + stderr,
     };
   }
 };
