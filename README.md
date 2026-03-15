@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=30&pause=1000&color=3FA1FF&width=450&lines=One+Command+Any+Framework)](https://git.io/typing-svg)
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=00D4FF&center=true&vCenter=true&width=600&lines=Scaffy+%F0%9F%9A%80;One+Command.+Any+Framework." alt="Scaffy" />
 
 <p align="center">
   <strong>The universal CLI scaffolding tool for modern developers.</strong><br/>
@@ -297,6 +297,38 @@ npm run test:coverage
 ```
 
 Scaffy maintains a minimum **80% test coverage** across all core modules. Every plugin ships with dry-run tests that verify the correct commands are generated — without executing anything on your machine.
+
+---
+
+## 🛣️ Roadmap
+
+**v0.1.0 — Hello World** _(current)_
+
+- [x] Core engine — detector, registry, interviewer, executor
+- [x] Functional programming architecture
+- [x] Requirement checking with OS-specific install guides
+- [x] Laravel v11, NestJS v10, VueJS v3 plugins
+- [x] GitHub Actions CI pipeline
+- [x] Published on npm
+
+**v0.2.0 — Community Ready**
+
+- [ ] ESM migration — modern JavaScript standard
+- [ ] Plugin contribution system with automated CI validation
+- [ ] Full documentation site
+- [ ] 15+ framework plugins
+
+**v0.3.0 — Growth**
+
+- [ ] AI mode — describe your project in plain English
+- [ ] `scaffy add github:user/plugin` — install external plugins
+- [ ] Discord community
+
+**v1.0.0 — Ecosystem**
+
+- [ ] VS Code extension
+- [ ] Plugin marketplace website
+- [ ] Enterprise adoption
 
 ---
 
