@@ -1,0 +1,22 @@
+# Tests
+coverage/
+**/*.test.js
+**/tests/
+
+# Dev config
+.husky/
+.eslintrc.json
+.prettierrc
+.prettierignore
+jest.config.js
+
+# GitHub
+.github/
+
+# Local
+*.tgz
+.env
+node_modules/
+
+# Test utilities
+test-utils/
