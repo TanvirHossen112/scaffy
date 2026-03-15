@@ -1,0 +1,35 @@
+{
+    "name": "NestJS",
+    "alias": ["nestjs", "nest"],
+    "language": "javascript",
+    "latest": "v10",
+    "versions": ["v10"],
+    "description": "A progressive Node.js framework for building efficient and scalable server-side applications",
+    "requires": [
+      {
+        "tool": "node",
+        "checkCommand": "node --version",
+        "parseVersion": "v([0-9.]+)",
+        "minVersion": "16.0.0",
+        "installGuide": {
+          "mac": "brew install node",
+          "linux": "sudo apt install nodejs npm",
+          "windows": "https://nodejs.org/en/download",
+          "docs": "https://nodejs.org"
+        }
+      },
+      {
+        "tool": "npm",
+        "checkCommand": "npm --version",
+        "parseVersion": "([0-9.]+)",
+        "minVersion": "8.0.0",
+        "installGuide": {
+          "mac": "brew install node",
+          "linux": "sudo apt install npm",
+          "windows": "https://nodejs.org/en/download",
+          "docs": "https://docs.npmjs.com"
+        }
+      }
+    ],
+    "maintainer": "community"
+  }

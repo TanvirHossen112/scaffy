@@ -1,0 +1,35 @@
+{
+    "name": "VueJS",
+    "alias": ["vue", "vuejs"],
+    "language": "javascript",
+    "latest": "v3",
+    "versions": ["v3"],
+    "description": "The progressive JavaScript framework for building user interfaces",
+    "requires": [
+      {
+        "tool": "node",
+        "checkCommand": "node --version",
+        "parseVersion": "v([0-9.]+)",
+        "minVersion": "18.0.0",
+        "installGuide": {
+          "mac": "brew install node",
+          "linux": "sudo apt install nodejs npm",
+          "windows": "https://nodejs.org/en/download",
+          "docs": "https://nodejs.org"
+        }
+      },
+      {
+        "tool": "npm",
+        "checkCommand": "npm --version",
+        "parseVersion": "([0-9.]+)",
+        "minVersion": "7.0.0",
+        "installGuide": {
+          "mac": "brew install node",
+          "linux": "sudo apt install npm",
+          "windows": "https://nodejs.org/en/download",
+          "docs": "https://docs.npmjs.com"
+        }
+      }
+    ],
+    "maintainer": "community"
+  }
