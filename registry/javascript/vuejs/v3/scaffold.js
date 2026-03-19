@@ -16,12 +16,8 @@ module.exports = async (answers, utils) => {
   const flags = [
     router ? '--router' : '--no-router',
     pinia ? '--pinia' : '--no-pinia',
-    vitest ? '--vitest' : '--no-vitest',
     typescript ? '--typescript' : '--no-typescript',
     eslint ? '--eslint' : '--no-eslint',
-    '--no-cypress',
-    '--no-playwright',
-    '--force',
   ].join(' ');
 
   await utils.run(`npx create-vue@3 ${projectName} ${flags}`);

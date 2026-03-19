@@ -85,7 +85,12 @@ const askDirectFramework = async query => {
 const askFrameworkQuestions = async (framework, plugin) => {
   console.log(chalk.bold(`\n🚀 Setting up ${framework.name}\n`));
 
-  const questions = buildQuestions(framework, plugin.questions);
+  const pluginQuestions =
+    typeof plugin.questions === 'function'
+      ? await plugin.questions()
+      : plugin.questions;
+
+  const questions = buildQuestions(framework, pluginQuestions);
 
   const answers = await inquirer.prompt(questions);
   return answers;

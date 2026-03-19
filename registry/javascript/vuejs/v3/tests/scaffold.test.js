@@ -111,21 +111,6 @@ describe('VueJS v3 scaffold — pinia', () => {
   });
 });
 
-// ─── Vitest ───────────────────────────────────────────
-describe('VueJS v3 scaffold — vitest', () => {
-  test('passes --vitest flag when vitest is true', async () => {
-    const mock = createMockUtils();
-    await scaffold({ ...baseAnswers, vitest: true }, mock.utils);
-    expect(mock.ran('--vitest')).toBe(true);
-  });
-
-  test('passes --no-vitest flag when vitest is false', async () => {
-    const mock = createMockUtils();
-    await scaffold(baseAnswers, mock.utils);
-    expect(mock.ran('--no-vitest')).toBe(true);
-  });
-});
-
 // ─── TypeScript ───────────────────────────────────────
 describe('VueJS v3 scaffold — typescript', () => {
   test('passes --typescript flag when typescript is true', async () => {
@@ -178,7 +163,6 @@ describe('VueJS v3 scaffold — full stack', () => {
         packageManager: 'pnpm',
         router: true,
         pinia: true,
-        vitest: true,
         typescript: true,
         eslint: true,
       },
@@ -187,7 +171,6 @@ describe('VueJS v3 scaffold — full stack', () => {
     expect(mock.ran('create-vue')).toBe(true);
     expect(mock.ran('--router')).toBe(true);
     expect(mock.ran('--pinia')).toBe(true);
-    expect(mock.ran('--vitest')).toBe(true);
     expect(mock.ran('--typescript')).toBe(true);
     expect(mock.ran('--eslint')).toBe(true);
     expect(mock.ranInProject('full-vue-app', 'pnpm install')).toBe(true);
@@ -200,7 +183,6 @@ describe('VueJS v3 scaffold — full stack', () => {
     expect(mock.ran('create-vue')).toBe(true);
     expect(mock.ran('--no-router')).toBe(true);
     expect(mock.ran('--no-pinia')).toBe(true);
-    expect(mock.ran('--no-vitest')).toBe(true);
     expect(mock.ran('--no-typescript')).toBe(true);
     expect(mock.ran('--no-eslint')).toBe(true);
   });
