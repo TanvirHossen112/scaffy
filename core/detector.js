@@ -155,6 +155,31 @@ const report = requirements => {
   return allPassed;
 };
 
+const detectAvailableChoices = async choices => {
+  if (!choices || choices.length === 0) return [];
+
+  const results = await Promise.all(
+    choices.map(async choice => {
+      try {
+        const { success, output } = runCommand(choice.checkCommand);
+
+        if (!success || !output || output.toString().trim() === '') {
+          return { ...choice, installed: false };
+        }
+
+        return { ...choice, installed: true };
+      } catch {
+        return { ...choice, installed: false };
+      }
+    })
+  );
+
+  const available = results.filter(c => c.installed);
+  return available.length > 0
+    ? available
+    : [{ ...choices[0], installed: false }];
+};
+
 module.exports = {
   getOS,
   runCommand,
@@ -169,4 +194,5 @@ module.exports = {
   formatFailureMessage,
   formatSuccessMessage,
   report,
+  detectAvailableChoices,
 };

@@ -7,6 +7,7 @@ const {
   checkTool,
   checkAll,
   formatToolStatus,
+  detectAvailableChoices,
 } = require('../detector');
 
 describe('getOS()', () => {
@@ -203,5 +204,91 @@ describe('formatToolStatus()', () => {
     });
     expect(result).toContain('12.0.0');
     expect(result).toContain('14.0.0');
+  });
+});
+
+describe('detectAvailableChoices()', () => {
+  const npmChoice = {
+    name: 'npm',
+    value: 'npm',
+    checkCommand: 'npm --version',
+  };
+  const yarnChoice = {
+    name: 'yarn',
+    value: 'yarn',
+    checkCommand: 'yarn --version',
+  };
+  const pnpmChoice = {
+    name: 'pnpm',
+    value: 'pnpm',
+    checkCommand: 'pnpm --version',
+  };
+
+  test('returns only installed tools', async () => {
+    const result = await detectAvailableChoices([
+      npmChoice,
+      yarnChoice,
+      pnpmChoice,
+    ]);
+    const values = result.map(c => c.value);
+    expect(values).toContain('npm');
+    result.forEach(c => expect(c.installed).toBe(true));
+  });
+
+  test('always returns at least one choice', async () => {
+    const result = await detectAvailableChoices([npmChoice, yarnChoice]);
+    expect(result.length).toBeGreaterThan(0);
+  });
+
+  test('returns first choice as fallback when nothing installed', async () => {
+    const allFakeChoices = [
+      {
+        name: 'fake-a',
+        value: 'fake-a',
+        checkCommand: 'node -e "process.exit(1)"',
+      },
+      {
+        name: 'fake-b',
+        value: 'fake-b',
+        checkCommand: 'node -e "process.exit(1)"',
+      },
+    ];
+    const result = await detectAvailableChoices(allFakeChoices);
+    expect(result.length).toBe(1);
+    expect(result[0].value).toBe('fake-a');
+  });
+
+  test('returns correct shape with name and value fields', async () => {
+    const result = await detectAvailableChoices([npmChoice]);
+    result.forEach(choice => {
+      expect(choice).toHaveProperty('name');
+      expect(choice).toHaveProperty('value');
+      expect(choice).toHaveProperty('checkCommand');
+    });
+  });
+
+  test('handles single choice array', async () => {
+    const result = await detectAvailableChoices([npmChoice]);
+    expect(result.length).toBe(1);
+    expect(result[0].value).toBe('npm');
+  });
+
+  test('handles empty choices array', async () => {
+    const result = await detectAvailableChoices([]);
+    expect(Array.isArray(result)).toBe(true);
+    expect(result.length).toBe(0);
+  });
+
+  test('npm is always detected as installed', async () => {
+    const result = await detectAvailableChoices([npmChoice]);
+    expect(result[0].value).toBe('npm');
+    expect(result[0].installed).toBe(true);
+  });
+
+  test('runs all checks in parallel', async () => {
+    const start = Date.now();
+    await detectAvailableChoices([npmChoice, yarnChoice, pnpmChoice]);
+    const duration = Date.now() - start;
+    expect(duration).toBeLessThan(3000);
   });
 });

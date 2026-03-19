@@ -45,7 +45,9 @@ const buildPluginUtils = executor => ({
   success,
   warn,
   error,
+  title,
   step,
+  divider,
 });
 
 // ─── Exports ───────────────────────────────────────────
