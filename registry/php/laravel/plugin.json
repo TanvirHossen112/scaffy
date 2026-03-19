@@ -1,10 +1,34 @@
 {
-    "name": "Laravel",
-    "alias": ["laravel"],
-    "language": "php",
-    "latest": "v11",
-    "versions": ["v11", "v10"],
-    "description": "The PHP Framework for Web Artisans",
-    "requires": [],
-    "maintainer": "community"
-  }
+  "name": "Laravel",
+  "alias": ["laravel"],
+  "language": "php",
+  "latest": "v11",
+  "versions": ["v11", "v10"],
+  "description": "The PHP Framework for Web Artisans",
+  "requires": [
+    {
+      "tool": "php",
+      "checkCommand": "php --version",
+      "parseVersion": "PHP ([0-9.]+)",
+      "minVersion": "8.2.0",
+      "installGuide": {
+        "mac": "brew install php",
+        "linux": "sudo apt install php8.2",
+        "windows": "https://windows.php.net/download",
+        "docs": "https://www.php.net"
+      }
+    },
+    {
+      "tool": "composer",
+      "checkCommand": "composer --version",
+      "parseVersion": "Composer version ([0-9.]+)",
+      "installGuide": {
+        "mac": "brew install composer",
+        "linux": "sudo apt install composer",
+        "windows": "https://getcomposer.org/Composer-Setup.exe",
+        "docs": "https://getcomposer.org"
+      }
+    }
+  ],
+  "maintainer": "community"
+}
