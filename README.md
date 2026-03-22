@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=00D4FF&center=true&vCenter=true&width=600&lines=Scaffy+%F0%9F%9A%80;One+Command.+Any+Framework." alt="Scaffy" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=00D4FF&center=true&vCenter=true&width=800&lines=Scaffy+%F0%9F%9A%80;One+Command.+Any+Framework." alt="Scaffy" />
 
 <p align="center">
   <strong>The universal CLI scaffolding tool for modern developers.</strong><br/>
