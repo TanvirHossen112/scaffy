@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=00D4FF&center=true&vCenter=true&width=600&lines=Scaffy+%F0%9F%9A%80;One+Command.+Any+Framework." alt="Scaffy" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=40&pause=1000&color=00D4FF&center=true&vCenter=true&width=800&lines=Scaffy+%F0%9F%9A%80;One+Command.+Any+Framework." alt="Scaffy" />
 
 <p align="center">
   <strong>The universal CLI scaffolding tool for modern developers.</strong><br/>
@@ -11,11 +11,11 @@
   <a href="https://github.com/TanvirHossen112/scaffy/actions/workflows/ci.yml">
     <img src="https://github.com/TanvirHossen112/scaffy/actions/workflows/ci.yml/badge.svg" alt="CI" />
   </a>
-  <a href="https://www.npmjs.com/package/scaffy">
-    <img src="https://img.shields.io/npm/v/scaffy?color=cb3837&logo=npm" alt="npm version" />
+  <a href="https://www.npmjs.com/package/scaffy-tool">
+    <img src="https://img.shields.io/npm/v/scaffy-tool?color=cb3837&logo=npm" alt="npm version" />
   </a>
-  <a href="https://www.npmjs.com/package/scaffy">
-    <img src="https://img.shields.io/npm/dm/scaffy?color=cb3837&logo=npm" alt="npm downloads" />
+  <a href="https://www.npmjs.com/package/scaffy-tool">
+    <img src="https://img.shields.io/npm/dm/scaffy-tool?color=cb3837&logo=npm" alt="npm downloads" />
   </a>
   <a href="https://nodejs.org">
     <img src="https://img.shields.io/badge/node-%3E%3D18.0.0-brightgreen?logo=node.js" alt="Node" />
@@ -88,13 +88,13 @@ One command. A few questions. Ready to code.
 
 Existing scaffolding tools are framework-specific, opinionated, and go stale fast. Scaffy takes a fundamentally different approach.
 
-|                             | Traditional Scaffolding    | Scaffy                             |
-| --------------------------- | -------------------------- | ---------------------------------- |
-| **Multi-framework support** | ❌ One tool per framework  | ✅ Every framework, one tool       |
-| **Always up to date**       | ❌ Stores stale templates  | ✅ Uses official CLI commands      |
-| **Requirement checking**    | ❌ Breaks halfway through  | ✅ Validates before starting       |
-| **Community extensible**    | ❌ Closed, maintainer-only | ✅ Add any framework in 3 files    |
-| **Version management**      | ❌ Usually locked to one   | ✅ Multiple versions per framework |
+|                             | Traditional Scaffolding        | Scaffy                              |
+|-----------------------------|-------------------------------|-------------------------------------|
+| **Multi-framework support** | ❌ One tool per framework      | ✅ Every framework, one tool        |
+| **Always up to date**       | ❌ Stores stale templates      | ✅ Uses official CLI commands       |
+| **Requirement checking**    | ❌ Breaks halfway through      | ✅ Validates before starting        |
+| **Community extensible**    | ❌ Closed, maintainer-only     | ✅ Add any framework in 3 files     |
+| **Version management**      | ❌ Usually locked to one       | ✅ Multiple versions per framework  |
 
 ---
 
@@ -103,7 +103,7 @@ Existing scaffolding tools are framework-specific, opinionated, and go stale fas
 **Install**
 
 ```bash
-npm install -g scaffy
+npm install -g scaffy-tool
 ```
 
 **Run**
@@ -219,16 +219,20 @@ Scaffy does **not** store template files. Instead, `scaffold.js` calls the frame
 ```javascript
 // registry/php/laravel/v11/scaffold.js
 module.exports = async (answers, utils) => {
-  const { projectName, starterKit, database } = answers;
+  const { projectName, starterKit, database } = answers
 
   // Step 1 — Official Laravel installer
-  await utils.run(`composer create-project laravel/laravel ${projectName}`);
+  await utils.run(
+    `composer create-project laravel/laravel ${projectName}`
+  )
 
   // Step 2 — Layered on top with your choices
   if (starterKit === 'Breeze') {
-    await utils.runInProject(projectName, `php artisan breeze:install`);
+    await utils.runInProject(projectName,
+      `php artisan breeze:install`
+    )
   }
-};
+}
 ```
 
 When a new framework version releases tomorrow, a community member can add support in minutes — with zero changes to Scaffy's core.
@@ -302,8 +306,7 @@ Scaffy maintains a minimum **80% test coverage** across all core modules. Every 
 
 ## 🛣️ Roadmap
 
-**v0.1.0 — Hello World** _(current)_
-
+**v0.1.0 — Hello World** *(current)*
 - [x] Core engine — detector, registry, interviewer, executor
 - [x] Functional programming architecture
 - [x] Requirement checking with OS-specific install guides
@@ -312,20 +315,17 @@ Scaffy maintains a minimum **80% test coverage** across all core modules. Every 
 - [x] Published on npm
 
 **v0.2.0 — Community Ready**
-
 - [ ] ESM migration — modern JavaScript standard
 - [ ] Plugin contribution system with automated CI validation
 - [ ] Full documentation site
 - [ ] 15+ framework plugins
 
 **v0.3.0 — Growth**
-
 - [ ] AI mode — describe your project in plain English
 - [ ] `scaffy add github:user/plugin` — install external plugins
 - [ ] Discord community
 
 **v1.0.0 — Ecosystem**
-
 - [ ] VS Code extension
 - [ ] Plugin marketplace website
 - [ ] Enterprise adoption
