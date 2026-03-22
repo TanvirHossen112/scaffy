@@ -1,13 +1,13 @@
 {
-  "name": "scaffy",
+  "name": "scaffy-tool",
   "type": "commonjs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "One command. Any framework. Ready to code.",
   "author": "Md Tanvir Hossen <tanvirhossen112@gmail.com>",
   "license": "MIT",
   "main": "cli.js",
   "bin": {
-    "scaffy": "./cli.js"
+    "scaffy": "cli.js"
   },
   "engines": {
     "node": ">=18.0.0"
