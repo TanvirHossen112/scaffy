@@ -44,7 +44,7 @@
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
     "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
-    "test:ci": "jest --coverage --ci --runInBand",
+    "test:ci": "node --experimental-vm-modules node_modules/.bin/jest --coverage --ci --runInBand",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",

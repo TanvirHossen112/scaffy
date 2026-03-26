@@ -1,9 +1,12 @@
 import { jest } from '@jest/globals';
+import inquirer from 'inquirer';
 import {
   baseQuestions,
   buildQuestions,
   buildFrameworkChoices,
   buildVersionChoices,
+  askVersion,
+  askFrameworkQuestions,
   askDirectFramework,
   handlePromptError,
 } from '../interviewer.js';
@@ -148,6 +151,62 @@ describe('buildVersionChoices()', () => {
   test('single version returns one choice', () => {
     const result = buildVersionChoices(mockFrameworkSingleVersion);
     expect(result.length).toBe(1);
+  });
+});
+
+describe('askVersion()', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('returns latest version when there is only one version', async () => {
+    const result = await askVersion(mockFrameworkSingleVersion);
+    expect(result).toBe('v10');
+  });
+
+  test('prompts user when there are multiple versions', async () => {
+    jest.spyOn(inquirer, 'prompt').mockResolvedValue({ version: 'v10' });
+    const result = await askVersion(mockFramework);
+    expect(result).toBe('v10');
+  });
+});
+
+// ─── askFrameworkQuestions ─────────────────────────────
+describe('askFrameworkQuestions()', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('uses plugin.questions() when function', async () => {
+    const promptMock = jest.spyOn(inquirer, 'prompt').mockResolvedValue({
+      projectName: 'my-laravel-app',
+      extra: 'yes',
+    });
+
+    const plugin = {
+      questions: async () => [
+        { type: 'input', name: 'extra', message: 'Extra? ' },
+      ],
+    };
+
+    const result = await askFrameworkQuestions(mockFramework, plugin);
+    expect(result).toEqual({ projectName: 'my-laravel-app', extra: 'yes' });
+    expect(promptMock).toHaveBeenCalled();
+  });
+
+  test('uses plugin.questions array when non-function', async () => {
+    const promptMock = jest.spyOn(inquirer, 'prompt').mockResolvedValue({
+      projectName: 'my-laravel-app',
+      solid: 'true',
+    });
+
+    const plugin = {
+      questions: [{ type: 'input', name: 'solid', message: 'Solid? ' }],
+    };
+
+    const result = await askFrameworkQuestions(mockFramework, plugin);
+    expect(result).toEqual({ projectName: 'my-laravel-app', solid: 'true' });
+    expect(promptMock).toHaveBeenCalled();
   });
 });
 
