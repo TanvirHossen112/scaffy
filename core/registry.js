@@ -29,10 +29,21 @@ const getFrameworks = () => {
   return index.frameworks;
 };
 
+const isPluginComplete = framework => {
+  const pluginPath = path.join(REGISTRY_PATH, framework.path);
+  const versionPath = path.join(pluginPath, framework.latest);
+  return (
+    fs.existsSync(path.join(versionPath, 'questions.js')) &&
+    fs.existsSync(path.join(versionPath, 'scaffold.js'))
+  );
+};
+
+const getAvailableFrameworks = () => getFrameworks().filter(isPluginComplete);
+
 const findFramework = query => {
   const q = query.toLowerCase().trim();
   return (
-    getFrameworks().find(
+    getAvailableFrameworks().find(
       f =>
         f.name.toLowerCase() === q || f.alias.some(a => a.toLowerCase() === q)
     ) || null
@@ -41,7 +52,7 @@ const findFramework = query => {
 
 const searchFrameworks = query => {
   const q = query.toLowerCase().trim();
-  return getFrameworks().filter(
+  return getAvailableFrameworks().filter(
     f =>
       f.name.toLowerCase().includes(q) ||
       f.language.toLowerCase().includes(q) ||
@@ -100,7 +111,7 @@ const formatFrameworkLine = f =>
   chalk.gray(` (${f.alias.join(', ')}) — latest: ${f.latest}`);
 
 const displayFrameworks = () => {
-  const frameworks = getFrameworks();
+  const frameworks = getAvailableFrameworks();
   if (frameworks.length === 0) {
     console.log(chalk.red('\n❌ No frameworks found\n'));
     return;
@@ -117,6 +128,8 @@ const displayFrameworks = () => {
 export {
   loadIndex,
   getFrameworks,
+  getAvailableFrameworks,
+  isPluginComplete,
   findFramework,
   searchFrameworks,
   groupByLanguage,

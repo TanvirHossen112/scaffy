@@ -1,7 +1,16 @@
+import { describe, it, expect, beforeEach, jest } from '@jest/globals';
 import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 import {
   loadIndex,
   getFrameworks,
+  getAvailableFrameworks,
+  isPluginComplete,
   findFramework,
   searchFrameworks,
   groupByLanguage,
@@ -171,5 +180,50 @@ describe('formatFrameworkLine()', () => {
     const result = formatFrameworkLine(framework);
     expect(result).toContain('nestjs');
     expect(result).toContain('nest');
+  });
+});
+
+describe('isPluginComplete', () => {
+  it('returns true when questions.js and scaffold.js exist', () => {
+    const framework = {
+      name: 'Laravel',
+      path: 'php/laravel',
+      latest: 'v11',
+    };
+    expect(isPluginComplete(framework)).toBe(true);
+  });
+
+  it('returns false when questions.js or scaffold.js is missing', () => {
+    const framework = {
+      name: 'Laravel',
+      path: 'php/laravel',
+      latest: 'v10', // stub only
+    };
+    expect(isPluginComplete(framework)).toBe(false);
+  });
+});
+
+describe('getAvailableFrameworks', () => {
+  it('returns only frameworks with complete plugin files', () => {
+    const frameworks = getAvailableFrameworks();
+    frameworks.forEach(f => {
+      expect(isPluginComplete(f)).toBe(true);
+    });
+  });
+
+  it('excludes stub-only frameworks', () => {
+    const frameworks = getAvailableFrameworks();
+    const names = frameworks.map(f => f.name.toLowerCase());
+    frameworks.forEach(f => {
+      const versionPath = path.join(
+        __dirname,
+        '..',
+        '..',
+        'registry',
+        f.path,
+        f.latest
+      );
+      expect(fs.existsSync(path.join(versionPath, 'scaffold.js'))).toBe(true);
+    });
   });
 });
