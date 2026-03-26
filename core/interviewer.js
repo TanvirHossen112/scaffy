@@ -1,6 +1,6 @@
-const chalk = require('chalk');
-const inquirer = require('inquirer');
-const { getFrameworks, findFramework } = require('./registry');
+import chalk from 'chalk';
+import inquirer from 'inquirer';
+import { getFrameworks, findFramework } from './registry.js';
 
 const baseQuestions = framework => [
   {
@@ -55,7 +55,6 @@ const askVersion = async framework => {
   if (framework.versions.length === 1) {
     return framework.latest;
   }
-
   const { version } = await inquirer.prompt([
     {
       type: 'list',
@@ -64,13 +63,11 @@ const askVersion = async framework => {
       choices: buildVersionChoices(framework),
     },
   ]);
-
   return version;
 };
 
 const askDirectFramework = async query => {
   const framework = findFramework(query);
-
   if (!framework) {
     console.log(chalk.red(`\n❌ Framework "${query}" not found.\n`));
     console.log(
@@ -78,20 +75,16 @@ const askDirectFramework = async query => {
     );
     return null;
   }
-
   return framework;
 };
 
 const askFrameworkQuestions = async (framework, plugin) => {
   console.log(chalk.bold(`\n🚀 Setting up ${framework.name}\n`));
-
   const pluginQuestions =
     typeof plugin.questions === 'function'
       ? await plugin.questions()
       : plugin.questions;
-
   const questions = buildQuestions(framework, pluginQuestions);
-
   const answers = await inquirer.prompt(questions);
   return answers;
 };
@@ -125,7 +118,7 @@ const runInteractiveMode = async () => {
   }
 };
 
-module.exports = {
+export {
   baseQuestions,
   buildQuestions,
   buildFrameworkChoices,

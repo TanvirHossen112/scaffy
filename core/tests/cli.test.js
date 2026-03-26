@@ -1,5 +1,9 @@
-const { execSync } = require('child_process');
-const path = require('path');
+import { execSync } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ─── Helper to run cli commands ───────────────────────
 const runCli = command => {
@@ -37,7 +41,7 @@ const runCli = command => {
 describe('scaffy --version', () => {
   test('returns version number', () => {
     const { output } = runCli('--version');
-    expect(output).toContain('0.1.0');
+    expect(output).toContain('0.2.0');
   });
 });
 

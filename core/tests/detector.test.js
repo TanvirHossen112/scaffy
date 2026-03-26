@@ -1,4 +1,4 @@
-const {
+import {
   getOS,
   runCommand,
   parseVersionFromOutput,
@@ -8,7 +8,7 @@ const {
   checkAll,
   formatToolStatus,
   detectAvailableChoices,
-} = require('../detector');
+} from '../detector.js';
 
 describe('getOS()', () => {
   test('returns mac, linux or windows', () => {

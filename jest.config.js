@@ -1,41 +1,21 @@
-module.exports = {
-  // Test environment
+export default {
   testEnvironment: 'node',
-
-  // Where to find tests
-  testMatch: ['**/tests/**/*.test.js', '**/*.test.js'],
-
-  // Coverage configuration
+  transform: {},
+  moduleNameMapper: {},
+  testMatch: ['**/tests/**/*.test.js'],
   collectCoverageFrom: [
+    'cli.js',
     'core/**/*.js',
     'registry/**/*.js',
-    '!core/executor.js',
-    '!core/utils.js',
-    '!core/plugin-validator.js',
-    '!registry/**/questions.js',
-    '!registry/**/scaffold.js',
-    '!registry/**/tests/**',
-    '!**/*.gitkeep',
-    '!**/node_modules/**',
+    '!**/*.test.js',
+    '!test-utils/**',
   ],
-
-  // Minimum coverage thresholds
   coverageThreshold: {
     global: {
-      branches: 60,
-      functions: 60,
-      lines: 60,
-      statements: 60,
+      branches: 70,
+      functions: 70,
+      lines: 70,
+      statements: 70,
     },
   },
-
-  // Coverage output
-  coverageDirectory: 'coverage',
-  coverageReporters: ['text', 'lcov', 'html'],
-
-  // Ignore patterns
-  testPathIgnorePatterns: ['/node_modules/', '/coverage/'],
-
-  // Show verbose output
-  verbose: true,
 };

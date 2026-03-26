@@ -1,6 +1,6 @@
 {
   "name": "scaffy-tool",
-  "type": "commonjs",
+  "type": "module",
   "version": "0.2.0",
   "description": "One command. Any framework. Ready to code.",
   "author": "Md Tanvir Hossen <tanvirhossen112@gmail.com>",
@@ -41,9 +41,9 @@
   },
   "scripts": {
     "start": "node cli.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --watch",
     "test:ci": "jest --coverage --ci --runInBand",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -52,11 +52,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "chalk": "^4.1.2",
+    "chalk": "^5.6.2",
     "commander": "^11.1.0",
     "figlet": "^1.10.0",
-    "inquirer": "^8.2.6",
-    "ora": "^5.4.1",
+    "inquirer": "^13.3.2",
+    "ora": "^9.3.0",
     "semver": "^7.7.4"
   },
   "devDependencies": {

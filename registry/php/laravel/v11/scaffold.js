@@ -1,4 +1,4 @@
-module.exports = async (answers, utils) => {
+export default async (answers, utils) => {
   const { projectName, starterKit, database, docker } = answers;
 
   // ─── Step 1 — Create Laravel Project ──────────────

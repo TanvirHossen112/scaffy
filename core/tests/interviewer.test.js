@@ -1,11 +1,12 @@
-const {
+import { jest } from '@jest/globals';
+import {
   baseQuestions,
   buildQuestions,
   buildFrameworkChoices,
   buildVersionChoices,
   askDirectFramework,
   handlePromptError,
-} = require('../interviewer');
+} from '../interviewer.js';
 
 const mockFramework = {
   name: 'Laravel',
