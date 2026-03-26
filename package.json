@@ -73,7 +73,7 @@
     "!(jest.config).js": [
       "eslint --fix",
       "prettier --write",
-      "jest --bail --findRelatedTests"
+      "node --experimental-vm-modules node_modules/.bin/jest --bail --findRelatedTests"
     ],
     "*.json": [
       "prettier --write"
