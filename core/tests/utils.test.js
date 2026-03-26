@@ -1,4 +1,5 @@
-const {
+import { jest } from '@jest/globals';
+import {
   log,
   success,
   warn,
@@ -7,7 +8,7 @@ const {
   divider,
   step,
   buildPluginUtils,
-} = require('../utils');
+} from '../utils.js';
 
 // ─── Silence console output during tests ──────────────
 beforeEach(() => {

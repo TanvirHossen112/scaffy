@@ -1,13 +1,6 @@
-module.exports = async (answers, utils) => {
-  const {
-    projectName,
-    packageManager,
-    router,
-    pinia,
-    vitest,
-    typescript,
-    eslint,
-  } = answers;
+export default async (answers, utils) => {
+  const { projectName, packageManager, router, pinia, typescript, eslint } =
+    answers;
 
   // ─── Step 1 — Build create-vue flags ──────────────
   utils.title('Creating VueJS v3 Project');

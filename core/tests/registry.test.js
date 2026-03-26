@@ -1,5 +1,5 @@
-const path = require('path');
-const {
+import path from 'path';
+import {
   loadIndex,
   getFrameworks,
   findFramework,
@@ -7,7 +7,7 @@ const {
   groupByLanguage,
   validatePluginFiles,
   formatFrameworkLine,
-} = require('../registry');
+} from '../registry.js';
 
 describe('loadIndex()', () => {
   test('loads index.json successfully', () => {
