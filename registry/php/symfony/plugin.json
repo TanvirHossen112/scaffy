@@ -1,0 +1,35 @@
+{
+  "name": "Symfony",
+  "alias": ["symfony"],
+  "language": "php",
+  "latest": "v7",
+  "versions": ["v7"],
+  "description": "High-performance PHP framework for web applications and APIs",
+  "requires": [
+    {
+      "tool": "php",
+      "checkCommand": "php --version",
+      "parseVersion": "PHP ([0-9]+\\.[0-9]+\\.[0-9]+)",
+      "minVersion": "8.2.0",
+      "installGuide": {
+        "mac": "brew install php",
+        "linux": "sudo apt install php8.2",
+        "windows": "https://windows.php.net",
+        "docs": "https://php.net"
+      }
+    },
+    {
+      "tool": "composer",
+      "checkCommand": "composer --version",
+      "parseVersion": "Composer version ([0-9]+\\.[0-9]+\\.[0-9]+)",
+      "minVersion": "2.0.0",
+      "installGuide": {
+        "mac": "brew install composer",
+        "linux": "sudo apt install composer",
+        "windows": "https://getcomposer.org/download",
+        "docs": "https://getcomposer.org"
+      }
+    }
+  ],
+  "maintainer": "community"
+}
