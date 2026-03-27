@@ -1,0 +1,23 @@
+{
+  "name": "Gin",
+  "alias": ["gin"],
+  "language": "go",
+  "latest": "v1",
+  "versions": ["v1"],
+  "description": "Fast and lightweight Go web framework",
+  "requires": [
+    {
+      "tool": "go",
+      "checkCommand": "go version",
+      "parseVersion": "go version go([0-9]+\\.[0-9]+\\.[0-9]+)",
+      "minVersion": "1.21.0",
+      "installGuide": {
+        "mac": "brew install go",
+        "linux": "sudo apt install golang-go",
+        "windows": "https://go.dev/dl",
+        "docs": "https://go.dev"
+      }
+    }
+  ],
+  "maintainer": "community"
+}
