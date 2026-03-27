@@ -1,0 +1,44 @@
+{
+  "name": "NextJS",
+  "alias": ["next", "nextjs"],
+  "language": "javascript",
+  "latest": "v14",
+  "versions": ["v14"],
+  "description": "The React framework for production — SSR, SSG, and App Router",
+  "requires": [
+    {
+      "tool": "node",
+      "checkCommand": "node --version",
+      "parseVersion": "v([0-9]+\\.[0-9]+\\.[0-9]+)",
+      "minVersion": "18.0.0",
+      "installGuide": {
+        "mac": "brew install node",
+        "linux": "sudo apt install nodejs",
+        "windows": "https://nodejs.org",
+        "docs": "https://nodejs.org"
+      }
+    },
+    {
+      "tool": "npm",
+      "checkCommand": "npm --version",
+      "parseVersion": "([0-9]+\\.[0-9]+\\.[0-9]+)",
+      "minVersion": "8.0.0",
+      "installGuide": {
+        "mac": "brew install node",
+        "linux": "sudo apt install npm",
+        "windows": "https://nodejs.org",
+        "docs": "https://docs.npmjs.com"
+      }
+    }
+  ],
+  "packageManagerQuestion": {
+    "tool": "packageManager",
+    "message": "Package manager:",
+    "choices": [
+      { "name": "npm",  "value": "npm",  "checkCommand": "npm --version" },
+      { "name": "yarn", "value": "yarn", "checkCommand": "yarn --version" },
+      { "name": "pnpm", "value": "pnpm", "checkCommand": "pnpm --version" }
+    ]
+  },
+  "maintainer": "community"
+}
