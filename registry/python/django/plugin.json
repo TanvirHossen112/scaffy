@@ -1,0 +1,35 @@
+{
+  "name": "Django",
+  "alias": ["django"],
+  "language": "python",
+  "latest": "v5",
+  "versions": ["v5"],
+  "description": "High-level Python web framework for rapid development",
+  "requires": [
+    {
+      "tool": "python",
+      "checkCommand": "python3 --version",
+      "parseVersion": "Python ([0-9]+\\.[0-9]+\\.[0-9]+)",
+      "minVersion": "3.10.0",
+      "installGuide": {
+        "mac": "brew install python",
+        "linux": "sudo apt install python3",
+        "windows": "https://python.org/downloads",
+        "docs": "https://python.org"
+      }
+    },
+    {
+      "tool": "pip",
+      "checkCommand": "pip3 --version",
+      "parseVersion": "pip ([0-9]+\\.[0-9]+)",
+      "minVersion": "22.0.0",
+      "installGuide": {
+        "mac": "brew install python",
+        "linux": "sudo apt install python3-pip",
+        "windows": "https://pip.pypa.io/en/stable/installation",
+        "docs": "https://pip.pypa.io"
+      }
+    }
+  ],
+  "maintainer": "community"
+}
