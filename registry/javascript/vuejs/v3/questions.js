@@ -1,7 +1,9 @@
-const { detectAvailableChoices } = require('../../../../core/detector');
+import { detectAvailableChoices } from '../../../../core/detector.js';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const pluginMeta = require('../plugin.json');
 
-module.exports = async () => {
+export default async () => {
   const availableManagers = await detectAvailableChoices(
     pluginMeta.packageManagerQuestion.choices
   );

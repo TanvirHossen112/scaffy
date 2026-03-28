@@ -1,7 +1,7 @@
-const registry = require('../registry');
-const detector = require('../detector');
-const executor = require('../executor');
-const { buildPluginUtils } = require('../utils');
+import * as registry from '../registry.js';
+import * as detector from '../detector.js';
+import * as executor from '../executor.js';
+import { buildPluginUtils } from '../utils.js';
 
 // ─── Mock Executor Factory ────────────────────────────
 const createMockExecutor = () => {
@@ -36,11 +36,11 @@ const createMockExecutor = () => {
 };
 
 // ─── Helper — Load Plugin And Build Utils ─────────────
-const loadPluginWithMockExecutor = (frameworkAlias, version) => {
+const loadPluginWithMockExecutor = async (frameworkAlias, version) => {
   const framework = registry.findFramework(frameworkAlias);
   if (!framework) throw new Error(`Framework not found: ${frameworkAlias}`);
 
-  const plugin = registry.loadPlugin(framework, version);
+  const plugin = await registry.loadPlugin(framework, version);
   const mock = createMockExecutor();
   const utils = buildPluginUtils(mock.executor);
 
@@ -51,12 +51,13 @@ const loadPluginWithMockExecutor = (frameworkAlias, version) => {
 // LARAVEL V11 — FULL FLOW SMOKE TESTS
 // ─────────────────────────────────────────────────────
 describe('Smoke Test — Laravel v11', () => {
-  test('plugin loads successfully', () => {
-    expect(() => loadPluginWithMockExecutor('laravel', 'v11')).not.toThrow();
+  test('plugin loads successfully', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('laravel', 'v11');
+    expect(plugin).toHaveProperty('meta');
   });
 
-  test('plugin has required fields', () => {
-    const { plugin } = loadPluginWithMockExecutor('laravel', 'v11');
+  test('plugin has required fields', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('laravel', 'v11');
     expect(plugin).toHaveProperty('meta');
     expect(plugin).toHaveProperty('questions');
     expect(plugin).toHaveProperty('scaffold');
@@ -64,8 +65,8 @@ describe('Smoke Test — Laravel v11', () => {
     expect(typeof plugin.scaffold).toBe('function');
   });
 
-  test('plugin.json has valid requires array', () => {
-    const { plugin } = loadPluginWithMockExecutor('laravel', 'v11');
+  test('plugin.json has valid requires array', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('laravel', 'v11');
     expect(Array.isArray(plugin.meta.requires)).toBe(true);
     expect(plugin.meta.requires.length).toBeGreaterThan(0);
     plugin.meta.requires.forEach(req => {
@@ -76,7 +77,7 @@ describe('Smoke Test — Laravel v11', () => {
   });
 
   test('full scaffold flow — default options', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor(
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
       'laravel',
       'v11'
     );
@@ -98,7 +99,7 @@ describe('Smoke Test — Laravel v11', () => {
   });
 
   test('full scaffold flow — breeze + mysql + docker', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor(
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
       'laravel',
       'v11'
     );
@@ -121,7 +122,7 @@ describe('Smoke Test — Laravel v11', () => {
   });
 
   test('full scaffold flow — jetstream', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor(
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
       'laravel',
       'v11'
     );
@@ -147,12 +148,13 @@ describe('Smoke Test — Laravel v11', () => {
 // NESTJS V10 — FULL FLOW SMOKE TESTS
 // ─────────────────────────────────────────────────────
 describe('Smoke Test — NestJS v10', () => {
-  test('plugin loads successfully', () => {
-    expect(() => loadPluginWithMockExecutor('nestjs', 'v10')).not.toThrow();
+  test('plugin loads successfully', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
+    expect(plugin).toHaveProperty('meta');
   });
 
-  test('plugin has required fields', () => {
-    const { plugin } = loadPluginWithMockExecutor('nestjs', 'v10');
+  test('plugin has required fields', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
     expect(plugin).toHaveProperty('meta');
     expect(plugin).toHaveProperty('questions');
     expect(plugin).toHaveProperty('scaffold');
@@ -160,20 +162,23 @@ describe('Smoke Test — NestJS v10', () => {
     expect(typeof plugin.scaffold).toBe('function');
   });
 
-  test('questions is async function', () => {
-    const { plugin } = loadPluginWithMockExecutor('nestjs', 'v10');
+  test('questions is async function', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
     expect(typeof plugin.questions).toBe('function');
   });
 
   test('questions returns array when called', async () => {
-    const { plugin } = loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
     const questions = await plugin.questions();
     expect(Array.isArray(questions)).toBe(true);
     expect(questions.length).toBeGreaterThan(0);
   });
 
   test('full scaffold flow — default options', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
+      'nestjs',
+      'v10'
+    );
 
     await plugin.scaffold(
       {
@@ -194,7 +199,10 @@ describe('Smoke Test — NestJS v10', () => {
   });
 
   test('full scaffold flow — postgres + auth + docker', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
+      'nestjs',
+      'v10'
+    );
 
     await plugin.scaffold(
       {
@@ -215,7 +223,10 @@ describe('Smoke Test — NestJS v10', () => {
   });
 
   test('full scaffold flow — mongodb', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
+      'nestjs',
+      'v10'
+    );
 
     await plugin.scaffold(
       {
@@ -237,12 +248,13 @@ describe('Smoke Test — NestJS v10', () => {
 // VUEJS V3 — FULL FLOW SMOKE TESTS
 // ─────────────────────────────────────────────────────
 describe('Smoke Test — VueJS v3', () => {
-  test('plugin loads successfully', () => {
-    expect(() => loadPluginWithMockExecutor('vue', 'v3')).not.toThrow();
+  test('plugin loads successfully', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('vue', 'v3');
+    expect(plugin).toHaveProperty('meta');
   });
 
-  test('plugin has required fields', () => {
-    const { plugin } = loadPluginWithMockExecutor('vue', 'v3');
+  test('plugin has required fields', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('vue', 'v3');
     expect(plugin).toHaveProperty('meta');
     expect(plugin).toHaveProperty('questions');
     expect(plugin).toHaveProperty('scaffold');
@@ -250,20 +262,23 @@ describe('Smoke Test — VueJS v3', () => {
     expect(typeof plugin.scaffold).toBe('function');
   });
 
-  test('questions is async function', () => {
-    const { plugin } = loadPluginWithMockExecutor('vue', 'v3');
+  test('questions is async function', async () => {
+    const { plugin } = await loadPluginWithMockExecutor('vue', 'v3');
     expect(typeof plugin.questions).toBe('function');
   });
 
   test('questions returns array when called', async () => {
-    const { plugin } = loadPluginWithMockExecutor('vue', 'v3');
+    const { plugin } = await loadPluginWithMockExecutor('vue', 'v3');
     const questions = await plugin.questions();
     expect(Array.isArray(questions)).toBe(true);
     expect(questions.length).toBeGreaterThan(0);
   });
 
   test('full scaffold flow — minimal options', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor('vue', 'v3');
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
+      'vue',
+      'v3'
+    );
 
     await plugin.scaffold(
       {
@@ -286,7 +301,10 @@ describe('Smoke Test — VueJS v3', () => {
   });
 
   test('full scaffold flow — all options enabled', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor('vue', 'v3');
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
+      'vue',
+      'v3'
+    );
 
     await plugin.scaffold(
       {
@@ -310,7 +328,10 @@ describe('Smoke Test — VueJS v3', () => {
   });
 
   test('full scaffold flow — pnpm package manager', async () => {
-    const { plugin, mock, utils } = loadPluginWithMockExecutor('vue', 'v3');
+    const { plugin, mock, utils } = await loadPluginWithMockExecutor(
+      'vue',
+      'v3'
+    );
 
     await plugin.scaffold(
       {

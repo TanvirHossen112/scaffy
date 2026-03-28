@@ -1,4 +1,4 @@
-const {
+import {
   getOS,
   runCommand,
   parseVersionFromOutput,
@@ -7,8 +7,10 @@ const {
   checkTool,
   checkAll,
   formatToolStatus,
+  formatInstallGuide,
+  formatResult,
   detectAvailableChoices,
-} = require('../detector');
+} from '../detector.js';
 
 describe('getOS()', () => {
   test('returns mac, linux or windows', () => {
@@ -290,5 +292,49 @@ describe('detectAvailableChoices()', () => {
     await detectAvailableChoices([npmChoice, yarnChoice, pnpmChoice]);
     const duration = Date.now() - start;
     expect(duration).toBeLessThan(3000);
+  });
+});
+
+describe('formatInstallGuide()', () => {
+  test('returns empty array when no guide', () => {
+    const result = formatInstallGuide();
+    expect(Array.isArray(result)).toBe(true);
+    expect(result).toHaveLength(0);
+  });
+
+  test('includes docs when provided', () => {
+    const result = formatInstallGuide({ docs: 'https://example.com' }, 'linux');
+    expect(result.join('')).toContain('Docs');
+  });
+
+  test('includes os-specific guide when present', () => {
+    const result = formatInstallGuide(
+      { linux: 'apt install', docs: 'https://example.com' },
+      'linux'
+    );
+    expect(result.length).toBeGreaterThan(0);
+    expect(result.find(line => line.includes('Install'))).toBeDefined();
+  });
+});
+
+describe('formatResult()', () => {
+  test('returns found line for installed and versionOk', () => {
+    const result = formatResult('linux')({
+      tool: 'node',
+      installed: true,
+      versionOk: true,
+    });
+    expect(result).toContain('found');
+  });
+
+  test('returns help lines for missing tool', () => {
+    const result = formatResult('linux')({
+      tool: 'fake-tool-xyz',
+      installed: false,
+      versionOk: false,
+      installGuide: { docs: 'https://example.com' },
+    });
+    expect(result).toContain('not found');
+    expect(result).toContain('Docs');
   });
 });

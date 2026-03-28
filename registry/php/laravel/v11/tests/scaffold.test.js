@@ -1,4 +1,4 @@
-const scaffold = require('../scaffold');
+import scaffold from '../scaffold.js';
 
 // ─── Mock Utils Factory ────────────────────────────────
 const createMockUtils = () => {

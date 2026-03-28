@@ -1,13 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const os = require('os');
-const {
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import {
   run,
   runInProject,
   setEnv,
   appendToFile,
   createFile,
-} = require('../executor');
+} from '../executor.js';
 
 const createTempDir = () => {
   const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'scaffy-test-'));

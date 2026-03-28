@@ -2,8 +2,8 @@
     "name": "NestJS",
     "alias": ["nestjs", "nest"],
     "language": "javascript",
-    "latest": "v10",
-    "versions": ["v10"],
+    "latest": "v11",
+    "versions": ["v11", "v10"],
     "description": "A progressive Node.js framework for building efficient and scalable server-side applications",
     "requires": [
       {

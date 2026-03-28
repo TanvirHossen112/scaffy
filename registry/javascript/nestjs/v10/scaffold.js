@@ -1,4 +1,4 @@
-module.exports = async (answers, utils) => {
+export default async (answers, utils) => {
   const { projectName, packageManager, database, auth, docker } = answers;
 
   // ─── Step 1 — Install NestJS CLI + Create Project ──

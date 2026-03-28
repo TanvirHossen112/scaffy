@@ -1,6 +1,12 @@
-const { execSync } = require('child_process');
-const path = require('path');
+import { execSync } from 'child_process';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
+const { version } = require('../../package.json');
 // ─── Helper to run cli commands ───────────────────────
 const runCli = command => {
   try {
@@ -37,7 +43,7 @@ const runCli = command => {
 describe('scaffy --version', () => {
   test('returns version number', () => {
     const { output } = runCli('--version');
-    expect(output).toContain('0.1.0');
+    expect(output).toContain(version);
   });
 });
 

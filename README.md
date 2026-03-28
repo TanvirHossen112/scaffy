@@ -88,13 +88,13 @@ One command. A few questions. Ready to code.
 
 Existing scaffolding tools are framework-specific, opinionated, and go stale fast. Scaffy takes a fundamentally different approach.
 
-|                             | Traditional Scaffolding        | Scaffy                              |
-|-----------------------------|-------------------------------|-------------------------------------|
-| **Multi-framework support** | ❌ One tool per framework      | ✅ Every framework, one tool        |
-| **Always up to date**       | ❌ Stores stale templates      | ✅ Uses official CLI commands       |
-| **Requirement checking**    | ❌ Breaks halfway through      | ✅ Validates before starting        |
-| **Community extensible**    | ❌ Closed, maintainer-only     | ✅ Add any framework in 3 files     |
-| **Version management**      | ❌ Usually locked to one       | ✅ Multiple versions per framework  |
+|                             | Traditional Scaffolding    | Scaffy                             |
+| --------------------------- | -------------------------- | ---------------------------------- |
+| **Multi-framework support** | ❌ One tool per framework  | ✅ Every framework, one tool       |
+| **Always up to date**       | ❌ Stores stale templates  | ✅ Uses official CLI commands      |
+| **Requirement checking**    | ❌ Breaks halfway through  | ✅ Validates before starting       |
+| **Community extensible**    | ❌ Closed, maintainer-only | ✅ Add any framework in 3 files    |
+| **Version management**      | ❌ Usually locked to one   | ✅ Multiple versions per framework |
 
 ---
 
@@ -142,7 +142,7 @@ scaffy --help            # Help
   <td rowspan="2"><strong>PHP</strong></td>
   <td>Laravel</td>
   <td><code>scaffy laravel</code></td>
-  <td>v10, v11</td>
+  <td>v11, v12, v13</td>
 </tr>
 <tr>
   <td>Symfony</td>
@@ -153,7 +153,7 @@ scaffy --help            # Help
   <td rowspan="4"><strong>JavaScript</strong></td>
   <td>NestJS</td>
   <td><code>scaffy nestjs</code></td>
-  <td>v10</td>
+  <td>v10, v11</td>
 </tr>
 <tr>
   <td>VueJS</td>
@@ -179,12 +179,7 @@ scaffy --help            # Help
 <tr>
   <td>FastAPI</td>
   <td><code>scaffy fastapi</code></td>
-  <td>v0.100+</td>
-</tr>
-<tr>
-  <td>Flask</td>
-  <td><code>scaffy flask</code></td>
-  <td>v3</td>
+  <td>v1</td>
 </tr>
 <tr>
   <td><strong>Go</strong></td>
@@ -219,20 +214,16 @@ Scaffy does **not** store template files. Instead, `scaffold.js` calls the frame
 ```javascript
 // registry/php/laravel/v11/scaffold.js
 module.exports = async (answers, utils) => {
-  const { projectName, starterKit, database } = answers
+  const { projectName, starterKit, database } = answers;
 
   // Step 1 — Official Laravel installer
-  await utils.run(
-    `composer create-project laravel/laravel ${projectName}`
-  )
+  await utils.run(`composer create-project laravel/laravel ${projectName}`);
 
   // Step 2 — Layered on top with your choices
   if (starterKit === 'Breeze') {
-    await utils.runInProject(projectName,
-      `php artisan breeze:install`
-    )
+    await utils.runInProject(projectName, `php artisan breeze:install`);
   }
-}
+};
 ```
 
 When a new framework version releases tomorrow, a community member can add support in minutes — with zero changes to Scaffy's core.
@@ -306,7 +297,8 @@ Scaffy maintains a minimum **80% test coverage** across all core modules. Every 
 
 ## 🛣️ Roadmap
 
-**v0.1.0 — Hello World** *(current)*
+**v0.1.0 — Hello World** _(current)_
+
 - [x] Core engine — detector, registry, interviewer, executor
 - [x] Functional programming architecture
 - [x] Requirement checking with OS-specific install guides
@@ -315,17 +307,20 @@ Scaffy maintains a minimum **80% test coverage** across all core modules. Every 
 - [x] Published on npm
 
 **v0.2.0 — Community Ready**
+
 - [ ] ESM migration — modern JavaScript standard
 - [ ] Plugin contribution system with automated CI validation
 - [ ] Full documentation site
 - [ ] 15+ framework plugins
 
 **v0.3.0 — Growth**
+
 - [ ] AI mode — describe your project in plain English
 - [ ] `scaffy add github:user/plugin` — install external plugins
 - [ ] Discord community
 
 **v1.0.0 — Ecosystem**
+
 - [ ] VS Code extension
 - [ ] Plugin marketplace website
 - [ ] Enterprise adoption

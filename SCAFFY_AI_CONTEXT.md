@@ -1,6 +1,9 @@
 # SCAFFY — AI PROJECT CONTEXT DOCUMENT
+
 # Feed this file to any AI agent to instantly understand
+
 # the full project, goals, decisions, and current status.
+
 # Last Updated: Sprint 1 Complete
 
 ---
@@ -8,14 +11,16 @@
 # 🧠 WHO ARE WE
 
 ## The Team
+
 - Project Manager: Claude (AI)
 - Lead Developer: Tanvir Hossen (GitHub: TanvirHossen112)
 - Role Split:
   - Claude → Planning, architecture, code generation,
-               PR reviews, sprint management, reporting
+    PR reviews, sprint management, reporting
   - Tanvir → Writing code, making commits, PRs, decisions
 
 ## Project Type
+
 Open source CLI tool built with Node.js
 Published on npm, hosted on GitHub
 MIT License
@@ -25,16 +30,20 @@ MIT License
 # 🎯 WHAT IS SCAFFY
 
 ## One Line
+
 "One command. Any framework. Ready to code."
 
 ## The Problem It Solves
+
 Every developer wastes 30-60 minutes setting up a new
 project — googling install commands, figuring out versions,
 installing dependencies manually, configuring Docker and
 databases. Scaffy eliminates all of that.
 
 ## The Solution
+
 A universal CLI scaffolding tool that:
+
 - Works across ANY framework (Laravel, NestJS, Vue, Django...)
 - Uses the framework's OFFICIAL installer — never stores templates
 - Checks requirements BEFORE running (nothing breaks halfway)
@@ -42,19 +51,21 @@ A universal CLI scaffolding tool that:
 - Supports multiple versions per framework
 
 ## The Difference From Existing Tools
-| | Traditional Tools | Scaffy |
-|---|---|---|
-| Multi-framework | ❌ One tool per framework | ✅ All frameworks |
-| Up to date | ❌ Stale templates | ✅ Official CLI always |
-| Requirement check | ❌ Breaks halfway | ✅ Validates first |
-| Community extensible | ❌ Closed | ✅ 3 files to add |
-| Version management | ❌ One version | ✅ Multiple versions |
+
+|                      | Traditional Tools         | Scaffy                 |
+| -------------------- | ------------------------- | ---------------------- |
+| Multi-framework      | ❌ One tool per framework | ✅ All frameworks      |
+| Up to date           | ❌ Stale templates        | ✅ Official CLI always |
+| Requirement check    | ❌ Breaks halfway         | ✅ Validates first     |
+| Community extensible | ❌ Closed                 | ✅ 3 files to add      |
+| Version management   | ❌ One version            | ✅ Multiple versions   |
 
 ---
 
 # 🏗️ TECHNICAL ARCHITECTURE
 
 ## Tech Stack
+
 - Runtime: Node.js 18+
 - Language: JavaScript (CommonJS — NOT ESM)
 - Module system: require() and module.exports ONLY
@@ -66,17 +77,20 @@ A universal CLI scaffolding tool that:
 - CI/CD: GitHub Actions
 
 ## CRITICAL: Module System Rule
+
 Scaffy uses CommonJS strictly. This is non-negotiable.
 ALWAYS use require() and module.exports.
 NEVER use import/export ESM syntax.
 Reason: Jest works natively, zero contributor friction.
 
 ## CRITICAL: Programming Style Rule
+
 All core/ modules use functional programming.
 Pure functions only. No classes. No 'this'.
 Every function independently exportable and testable.
 
 ## Folder Structure
+
 ```
 scaffy/
 ├── cli.js                    # Entry point
@@ -128,12 +142,14 @@ scaffy/
 # 🔌 THE PLUGIN SYSTEM
 
 ## How It Works
+
 Every framework is a self-contained plugin of exactly 3 files.
 Scaffy runs the framework's OFFICIAL installer — never copies files.
 
 ## Plugin Contract (3 Files)
 
 ### 1. plugin.json — Identity and requirements
+
 ```json
 {
   "name": "Laravel",
@@ -170,49 +186,48 @@ Scaffy runs the framework's OFFICIAL installer — never copies files.
 ```
 
 ### 2. questions.js — What to ask user
+
 ```javascript
 module.exports = [
   {
     type: 'list',
     name: 'starterKit',
     message: 'Starter kit?',
-    choices: ['Breeze', 'Jetstream', 'None']
+    choices: ['Breeze', 'Jetstream', 'None'],
   },
   {
     type: 'list',
     name: 'database',
     message: 'Database?',
-    choices: ['mysql', 'postgresql', 'sqlite']
+    choices: ['mysql', 'postgresql', 'sqlite'],
   },
   {
     type: 'confirm',
     name: 'docker',
-    message: 'Add Docker (Sail)?'
-  }
-]
+    message: 'Add Docker (Sail)?',
+  },
+];
 ```
 
 ### 3. scaffold.js — What commands to run
+
 ```javascript
 module.exports = async (answers, utils) => {
-  const { projectName, starterKit, database, docker } = answers
+  const { projectName, starterKit, database, docker } = answers;
 
   // ALWAYS use official installer
-  await utils.run(
-    `composer create-project laravel/laravel ${projectName}`
-  )
+  await utils.run(`composer create-project laravel/laravel ${projectName}`);
 
   if (starterKit === 'Breeze') {
-    await utils.runInProject(projectName,
-      `php artisan breeze:install`
-    )
+    await utils.runInProject(projectName, `php artisan breeze:install`);
   }
 
-  utils.success(`✅ Laravel v11 ready! cd ${projectName}`)
-}
+  utils.success(`✅ Laravel v11 ready! cd ${projectName}`);
+};
 ```
 
 ## The utils API (available in every scaffold.js)
+
 - utils.run(command) — run in current dir
 - utils.runInProject(name, command) — run inside project folder
 - utils.setEnv(project, vars) — set .env variables
@@ -222,7 +237,9 @@ module.exports = async (answers, utils) => {
 - utils.warn(message) — yellow warning output
 
 ## Adding A New Framework = 3 Files Only
+
 Anyone can add a framework by:
+
 1. Creating registry/<language>/<framework>/plugin.json
 2. Creating registry/<language>/<framework>/<version>/questions.js
 3. Creating registry/<language>/<framework>/<version>/scaffold.js
@@ -235,11 +252,13 @@ Anyone can add a framework by:
 # 🌿 GIT WORKFLOW
 
 ## Branch Strategy
+
 - main → stable, production only
 - develop → integration, all features merge here
 - ALWAYS branch from develop, NEVER from main
 
 ## Branch Naming
+
 - feature/xxx → new features
 - bugfix/xxx → bug fixes
 - plugin/xxx → new framework plugins
@@ -249,6 +268,7 @@ Anyone can add a framework by:
 - refactor/xxx → code improvements
 
 ## Commit Convention (Conventional Commits)
+
 - feat: new feature
 - fix: bug fix
 - test: adding tests
@@ -259,6 +279,7 @@ Anyone can add a framework by:
 - ci: CI/CD changes
 
 ## PR Rules
+
 - Always PR to develop (never main)
 - Must pass CI (ESLint + Prettier + Jest)
 - Must have tests for new code
@@ -267,6 +288,7 @@ Anyone can add a framework by:
 - Use squash merge to keep history clean
 
 ## Branch Protection
+
 - main: requires PR, linear history, CI must pass
 - develop: requires PR, linear history, CI must pass
 
@@ -275,27 +297,33 @@ Anyone can add a framework by:
 # 📋 AGILE PROCESS
 
 ## Tools
+
 - GitHub Issues → tasks and bugs
 - GitHub Projects → kanban board (Scaffy Roadmap)
 - GitHub Milestones → milestone tracking
 - GitHub Actions → CI/CD
 
 ## Sprint Structure
+
 - Sprint length: 1 week
 - Branch from develop for every issue
 - PR back to develop when done
 - Claude gives sprint report at end
 
 ## Issue Labels
+
 - type:feature, type:bug, type:test, type:docs, type:plugin
 - priority:critical, priority:high, priority:medium, priority:low
 - status:in-progress, status:blocked, status:needs-review
 
 ## Board Columns
+
 - Backlog → Sprint Ready → In Progress → In Review → Done
 
 ## Definition of Done
+
 An issue is ONLY done when:
+
 - Code written
 - Tests written and passing
 - PR reviewed and merged to develop
@@ -307,6 +335,7 @@ An issue is ONLY done when:
 # 📊 CURRENT STATUS
 
 ## Completed — Sprint 1 ✅
+
 - #001 npm project initialized (package.json, .gitignore, LICENSE)
 - #002 Full folder structure created
 - #003 ESLint + Prettier configured
@@ -321,11 +350,13 @@ An issue is ONLY done when:
 - CONTRIBUTING.md (professional, full plugin guide)
 
 ## Currently Passing
+
 - 67 tests passing
 - CI green on develop
 - All Sprint 1 branches deleted
 
 ## Not Yet Built (Sprint 2+)
+
 - executor.js (command runner)
 - utils.js (shared helpers)
 - plugin-validator.js (validates plugin structure)
@@ -340,26 +371,34 @@ An issue is ONLY done when:
 # 🏁 MILESTONES
 
 ## v0.1.0 — Hello World (40% complete)
+
 Goal: Working CLI with 3 plugins, published on npm
+
 - [x] Core engine built
 - [ ] Laravel, NestJS, VueJS plugins
 - [ ] Full end-to-end working
 - [ ] Published on npm
 
 ## v0.2.0 — Community Ready
+
 Goal: Plugin contribution system, CI validation, 15+ plugins
+
 - [ ] Plugin contribution CI validation
 - [ ] Full documentation site
 - [ ] 15+ framework plugins
 
 ## v0.3.0 — Growth
+
 Goal: AI mode, external plugins, Discord
+
 - [ ] AI mode (describe project in plain English)
 - [ ] scaffy add github:user/plugin
 - [ ] Discord community
 
 ## v1.0.0 — Ecosystem
+
 Goal: VS Code extension, plugin marketplace
+
 - [ ] VS Code extension
 - [ ] Plugin marketplace website
 
@@ -368,10 +407,12 @@ Goal: VS Code extension, plugin marketplace
 # 🎯 SPRINT 2 PLAN (NOT STARTED)
 
 ## Goal
+
 Build first 3 real working plugins and connect
 everything together in cli.js
 
 ## Issues To Create
+
 - #011 → Build executor.js + utils.js (core runner)
 - #012 → Connect cli.js end to end
 - #013 → Laravel v11 plugin + tests
@@ -384,17 +425,20 @@ everything together in cli.js
 # 💰 BUSINESS MODEL
 
 ## Revenue
+
 - Buy Me A Coffee: buymeacoffee.com/TanvirHossen112
 - GitHub Sponsors (future)
 - No ads, no paywalls, always free and open source
 
 ## Success Metrics
+
 - Phase 1: 100 GitHub stars, 5 plugins
 - Phase 2: 500 stars, 15 plugins, 10 contributors
 - Phase 3: 2000 stars, 50+ plugins, npm top 1000
 - Phase 4: 5000+ stars, industry adoption
 
 ## Target Users
+
 - Junior devs who don't know setup steps
 - Senior devs tired of repetitive setup
 - Teams wanting standardized project structure
@@ -433,6 +477,7 @@ everything together in cli.js
 # 📦 DEPENDENCIES
 
 ## Production
+
 - commander → CLI argument parsing
 - chalk → Terminal colors
 - figlet → ASCII art banner
@@ -441,6 +486,7 @@ everything together in cli.js
 - semver → Version comparison
 
 ## Development
+
 - jest → Testing
 - eslint → Linting
 - prettier → Formatting
