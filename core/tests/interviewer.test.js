@@ -84,7 +84,7 @@ describe('baseQuestions()', () => {
 describe('buildQuestions()', () => {
   test('combines base and plugin questions', () => {
     const pluginQuestions = [
-      { type: 'list', name: 'database', message: 'DB?', choices: [] },
+      { type: 'select', name: 'database', message: 'DB?', choices: [] },
     ];
     const result = buildQuestions(mockFramework, pluginQuestions);
     expect(result.length).toBe(2); // 1 base + 1 plugin
@@ -92,7 +92,7 @@ describe('buildQuestions()', () => {
 
   test('base questions come first', () => {
     const pluginQuestions = [
-      { type: 'list', name: 'database', message: 'DB?', choices: [] },
+      { type: 'select', name: 'database', message: 'DB?', choices: [] },
     ];
     const result = buildQuestions(mockFramework, pluginQuestions);
     expect(result[0].name).toBe('projectName');

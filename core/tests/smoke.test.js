@@ -364,7 +364,7 @@ describe('Smoke Test — Registry', () => {
     const framework = registry.findFramework('laravel');
     expect(framework.name).toBe('Laravel');
     expect(framework.language).toBe('php');
-    expect(framework.latest).toBe('v11');
+    expect(framework.latest).toBe('v13');
   });
 
   test('nestjs has correct metadata', () => {

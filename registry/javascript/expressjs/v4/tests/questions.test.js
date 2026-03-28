@@ -37,7 +37,7 @@ describe('ExpressJS v4 questions', () => {
     });
 
     it('is a list type', () => {
-      expect(question.type).toBe('list');
+      expect(question.type).toBe('select');
     });
 
     it('uses available managers from detectAvailableChoices', () => {
@@ -82,7 +82,7 @@ describe('ExpressJS v4 questions', () => {
     });
 
     it('is a list type', () => {
-      expect(question.type).toBe('list');
+      expect(question.type).toBe('select');
     });
 
     it('has 4 choices', () => {

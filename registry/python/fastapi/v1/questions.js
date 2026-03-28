@@ -1,6 +1,6 @@
 export default [
   {
-    type: 'list',
+    type: 'select',
     name: 'database',
     message: 'Database?',
     choices: [

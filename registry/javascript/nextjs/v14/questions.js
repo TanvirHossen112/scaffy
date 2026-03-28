@@ -11,7 +11,7 @@ export default async () => {
 
   return [
     {
-      type: 'list',
+      type: 'select',
       name: 'packageManager',
       message: pluginMeta.packageManagerQuestion.message,
       choices: availableManagers,
