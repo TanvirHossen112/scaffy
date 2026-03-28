@@ -142,7 +142,7 @@ scaffy --help            # Help
   <td rowspan="2"><strong>PHP</strong></td>
   <td>Laravel</td>
   <td><code>scaffy laravel</code></td>
-  <td>v10, v11</td>
+  <td>v11, v12, v13</td>
 </tr>
 <tr>
   <td>Symfony</td>
@@ -153,7 +153,7 @@ scaffy --help            # Help
   <td rowspan="4"><strong>JavaScript</strong></td>
   <td>NestJS</td>
   <td><code>scaffy nestjs</code></td>
-  <td>v10</td>
+  <td>v10, v11</td>
 </tr>
 <tr>
   <td>VueJS</td>
@@ -179,12 +179,7 @@ scaffy --help            # Help
 <tr>
   <td>FastAPI</td>
   <td><code>scaffy fastapi</code></td>
-  <td>v0.100+</td>
-</tr>
-<tr>
-  <td>Flask</td>
-  <td><code>scaffy flask</code></td>
-  <td>v3</td>
+  <td>v1</td>
 </tr>
 <tr>
   <td><strong>Go</strong></td>
