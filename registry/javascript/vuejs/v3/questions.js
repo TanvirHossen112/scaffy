@@ -23,7 +23,7 @@ export default async () => {
       },
     },
     {
-      type: 'list',
+      type: 'select',
       name: 'packageManager',
       message: pluginMeta.packageManagerQuestion.message,
       choices: availableManagers.map(m => ({

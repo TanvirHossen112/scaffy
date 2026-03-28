@@ -12,45 +12,8 @@ describe('Symfony v7 questions', () => {
     expect(Array.isArray(questions)).toBe(true);
   });
 
-  it('has exactly 3 questions', () => {
-    expect(questions).toHaveLength(3);
-  });
-
-  // ─── projectType ───────────────────────────────────────
-
-  describe('projectType question', () => {
-    let question;
-
-    beforeEach(() => {
-      question = questions.find(q => q.name === 'projectType');
-    });
-
-    it('exists', () => {
-      expect(question).toBeDefined();
-    });
-
-    it('is a list type', () => {
-      expect(question.type).toBe('list');
-    });
-
-    it('has 3 choices', () => {
-      expect(question.choices).toHaveLength(3);
-    });
-
-    it('has webapp choice', () => {
-      const values = question.choices.map(c => c.value);
-      expect(values).toContain('webapp');
-    });
-
-    it('has api choice', () => {
-      const values = question.choices.map(c => c.value);
-      expect(values).toContain('api');
-    });
-
-    it('has microservice choice', () => {
-      const values = question.choices.map(c => c.value);
-      expect(values).toContain('microservice');
-    });
+  it('has exactly 2 questions', () => {
+    expect(questions).toHaveLength(2);
   });
 
   // ─── database ──────────────────────────────────────────
@@ -67,7 +30,7 @@ describe('Symfony v7 questions', () => {
     });
 
     it('is a list type', () => {
-      expect(question.type).toBe('list');
+      expect(question.type).toBe('select');
     });
 
     it('has 4 choices', () => {

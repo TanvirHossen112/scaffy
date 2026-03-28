@@ -6,25 +6,13 @@ export default async (answers, utils) => {
   // ─── Step 1: Install ───────────────────────────────────
   utils.step(1, 'Running Symfony installer');
 
-  if (projectType === 'webapp') {
-    await utils.run(
-      `composer create-project symfony/website-skeleton:"7.*" ${projectName}`
-    );
-  } else {
-    await utils.run(
-      `composer create-project symfony/skeleton:"7.*" ${projectName}`
-    );
-  }
+  await utils.run(
+    `composer create-project symfony/skeleton:"7.*" ${projectName}`
+  );
 
-  // ─── Step 2: API Platform ──────────────────────────────
-  if (projectType === 'api') {
-    utils.step(2, 'Installing API Platform');
-    await utils.runInProject(projectName, 'composer require api-platform/core');
-  }
-
-  // ─── Step 3: Database ──────────────────────────────────
+  // ─── Step 2: Database ──────────────────────────────────
   if (database !== 'none') {
-    utils.step(3, 'Configuring database');
+    utils.step(2, 'Configuring database');
     await utils.runInProject(projectName, 'composer require symfony/orm-pack');
     await utils.runInProject(
       projectName,
@@ -42,9 +30,9 @@ export default async (answers, utils) => {
     });
   }
 
-  // ─── Step 4: Docker ────────────────────────────────────
+  // ─── Step 3: Docker ────────────────────────────────────
   if (docker) {
-    utils.step(4, 'Creating Docker config');
+    utils.step(3, 'Creating Docker config');
 
     const dockerCompose = `version: '3.8'
 services:

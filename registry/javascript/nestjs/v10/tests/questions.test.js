@@ -128,7 +128,7 @@ describe('NestJS v10 Questions', () => {
     });
 
     test('should have correct type', () => {
-      expect(packageManagerQuestion.type).toBe('list');
+      expect(packageManagerQuestion.type).toBe('select');
     });
 
     test('should have correct message from plugin metadata', () => {
@@ -176,7 +176,7 @@ describe('NestJS v10 Questions', () => {
     });
 
     test('should have correct type', () => {
-      expect(databaseQuestion.type).toBe('list');
+      expect(databaseQuestion.type).toBe('select');
     });
 
     test('should have correct message', () => {

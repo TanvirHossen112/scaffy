@@ -164,6 +164,7 @@ describe('formatFrameworkLine()', () => {
       name: 'Laravel',
       alias: ['laravel'],
       latest: 'v11',
+      versions: ['v11', 'v10'],
     };
     const result = formatFrameworkLine(framework);
     expect(result).toContain('Laravel');
@@ -176,6 +177,7 @@ describe('formatFrameworkLine()', () => {
       name: 'NestJS',
       alias: ['nestjs', 'nest'],
       latest: 'v10',
+      versions: ['v10'],
     };
     const result = formatFrameworkLine(framework);
     expect(result).toContain('nestjs');

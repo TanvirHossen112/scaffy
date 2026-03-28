@@ -106,9 +106,16 @@ const loadPlugin = async (framework, version) => {
   return { meta, questions, scaffold };
 };
 
-const formatFrameworkLine = f =>
-  chalk.white(`    • ${f.name}`) +
-  chalk.gray(` (${f.alias.join(', ')}) — latest: ${f.latest}`);
+const formatFrameworkLine = f => {
+  const versionsStr = f.versions
+    .map(v => (v === f.latest ? chalk.green(`${v} (latest)`) : chalk.gray(v)))
+    .join(chalk.gray(', '));
+  return (
+    chalk.white(`    • ${f.name}`) +
+    chalk.gray(` (${f.alias.join(', ')}) — `) +
+    versionsStr
+  );
+};
 
 const displayFrameworks = () => {
   const frameworks = getAvailableFrameworks();

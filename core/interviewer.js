@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import { getFrameworks, findFramework } from './registry.js';
+import { getAvailableFrameworks, findFramework } from './registry.js';
 
 const baseQuestions = framework => [
   {
@@ -26,12 +26,15 @@ const buildQuestions = (framework, pluginQuestions) => [
 ];
 
 const buildFrameworkChoices = () =>
-  getFrameworks().map(f => ({
-    name:
-      `${f.name} ${chalk.gray(`(${f.language})`)} ` +
-      chalk.cyan(`— latest: ${f.latest}`),
-    value: f,
-  }));
+  getAvailableFrameworks().map(f => {
+    const versionsStr = f.versions
+      .map(v => (v === f.latest ? chalk.green(`${v} (latest)`) : chalk.gray(v)))
+      .join(chalk.gray(', '));
+    return {
+      name: `${f.name} ${chalk.gray(`(${f.language})`)} — ` + versionsStr,
+      value: f,
+    };
+  });
 
 const buildVersionChoices = framework =>
   framework.versions.map(v => ({
@@ -42,7 +45,7 @@ const buildVersionChoices = framework =>
 const askFramework = async () => {
   const { framework } = await inquirer.prompt([
     {
-      type: 'list',
+      type: 'select',
       name: 'framework',
       message: 'Which framework?',
       choices: buildFrameworkChoices(),
@@ -57,7 +60,7 @@ const askVersion = async framework => {
   }
   const { version } = await inquirer.prompt([
     {
-      type: 'list',
+      type: 'select',
       name: 'version',
       message: 'Which version?',
       choices: buildVersionChoices(framework),

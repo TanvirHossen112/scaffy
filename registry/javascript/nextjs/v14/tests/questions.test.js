@@ -37,7 +37,7 @@ describe('NextJS v14 questions', () => {
     });
 
     it('is a list type', () => {
-      expect(question.type).toBe('list');
+      expect(question.type).toBe('select');
     });
 
     it('uses available managers from detectAvailableChoices', () => {

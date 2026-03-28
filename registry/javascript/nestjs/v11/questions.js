@@ -23,7 +23,7 @@ export default async () => {
       },
     },
     {
-      type: 'list',
+      type: 'select',
       name: 'packageManager',
       message: pluginMeta.packageManagerQuestion.message,
       choices: availableManagers.map(m => ({
@@ -33,7 +33,7 @@ export default async () => {
       default: availableManagers[0].value,
     },
     {
-      type: 'list',
+      type: 'select',
       name: 'database',
       message: 'Database:',
       choices: [
