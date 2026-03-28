@@ -171,7 +171,7 @@ scaffy --help            # Help
   <td>v4</td>
 </tr>
 <tr>
-  <td rowspan="3"><strong>Python</strong></td>
+  <td rowspan="2"><strong>Python</strong></td>
   <td>Django</td>
   <td><code>scaffy django</code></td>
   <td>v5</td>
