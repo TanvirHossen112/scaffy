@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1] — 2026-03-28
+
+### Fixed
+
+- **Interactive Prompts**: Fixed an issue where the framework selection menu fell back to a plain text input due to incompatibility with `inquirer@13.x`'s new `select` API.
+- **Terminal Interactivity**: Removed the `ora` loading spinner during scaffolding to prevent it from intercepting standard input, restoring full terminal interactivity for framework installers (e.g. Laravel/NestJS) that ask their own prompts.
+- **Framework Display**: Updated the interactive menu to correctly list all available plugin versions inline (e.g. `v13 (latest), v12, v11`) before selection, matching the `scaffy list` command.
+- **Hidden Plugins**: Ensured incomplete/stub framework plugins (like Flask) are fully excluded from the interactive selection menu.
+- **Test Suite**: Synchronized the test suites to pass against the new inquirer API and the simplified Symfony plugin logic.
+
 ## [1.0.0] — 2026-03-28
 
 ### Added
