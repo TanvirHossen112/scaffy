@@ -40,16 +40,14 @@ const runScaffold = async framework => {
     const utils = buildPluginUtils(executor);
 
     divider();
-    const spinner = ora(
-      chalk.cyan(`Scaffolding ${framework.name} project...`)
-    ).start();
+    console.log(chalk.cyan(`\n🚀 Scaffolding ${framework.name} project...\n`));
     try {
       await plugin.scaffold(answers, utils);
-      spinner.succeed(
-        chalk.green(`${framework.name} project created successfully!`)
+      console.log(
+        chalk.green(`\n✅ ${framework.name} project created successfully!\n`)
       );
     } catch (err) {
-      spinner.fail(chalk.red('Scaffolding failed'));
+      console.log(chalk.red('\n❌ Scaffolding failed\n'));
       error(err.message);
       process.exit(1);
     }

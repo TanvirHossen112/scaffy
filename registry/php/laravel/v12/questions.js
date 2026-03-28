@@ -15,7 +15,7 @@ export default [
     },
   },
   {
-    type: 'list',
+    type: 'select',
     name: 'starterKit',
     message: 'Starter kit?',
     choices: [
@@ -26,7 +26,7 @@ export default [
     default: 'none',
   },
   {
-    type: 'list',
+    type: 'select',
     name: 'database',
     message: 'Database?',
     choices: [

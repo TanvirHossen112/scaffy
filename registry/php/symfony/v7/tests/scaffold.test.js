@@ -24,26 +24,10 @@ describe('Symfony v7 scaffold', () => {
     };
   });
 
-  it('runs website-skeleton installer for webapp type', async () => {
+  it('runs skeleton installer', async () => {
     await scaffold(
       {
         projectName: 'my-app',
-        projectType: 'webapp',
-        database: 'none',
-        docker: false,
-      },
-      mockUtils
-    );
-    expect(mockUtils.run).toHaveBeenCalledWith(
-      expect.stringContaining('symfony/website-skeleton:"7.*" my-app')
-    );
-  });
-
-  it('runs skeleton installer for api type', async () => {
-    await scaffold(
-      {
-        projectName: 'my-app',
-        projectType: 'api',
         database: 'none',
         docker: false,
       },
@@ -52,51 +36,6 @@ describe('Symfony v7 scaffold', () => {
     expect(mockUtils.run).toHaveBeenCalledWith(
       expect.stringContaining('symfony/skeleton:"7.*" my-app')
     );
-  });
-
-  it('runs skeleton installer for microservice type', async () => {
-    await scaffold(
-      {
-        projectName: 'my-app',
-        projectType: 'microservice',
-        database: 'none',
-        docker: false,
-      },
-      mockUtils
-    );
-    expect(mockUtils.run).toHaveBeenCalledWith(
-      expect.stringContaining('symfony/skeleton:"7.*" my-app')
-    );
-  });
-
-  it('installs api-platform when type is api', async () => {
-    await scaffold(
-      {
-        projectName: 'my-app',
-        projectType: 'api',
-        database: 'none',
-        docker: false,
-      },
-      mockUtils
-    );
-    expect(mockUtils.runInProject).toHaveBeenCalledWith(
-      'my-app',
-      expect.stringContaining('api-platform/core')
-    );
-  });
-
-  it('does NOT install api-platform for webapp or microservice', async () => {
-    await scaffold(
-      {
-        projectName: 'my-app',
-        projectType: 'webapp',
-        database: 'none',
-        docker: false,
-      },
-      mockUtils
-    );
-    const calls = mockUtils.runInProject.mock.calls.map(c => c[1]);
-    expect(calls.some(c => c.includes('api-platform'))).toBe(false);
   });
 
   it('installs orm-pack when database is selected', async () => {

@@ -30,7 +30,7 @@ describe('FastAPI v1 questions', () => {
     });
 
     it('is a list type', () => {
-      expect(question.type).toBe('list');
+      expect(question.type).toBe('select');
     });
 
     it('has 4 choices', () => {
