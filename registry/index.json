@@ -21,8 +21,8 @@
         "name": "NestJS",
         "alias": ["nestjs", "nest"],
         "language": "javascript",
-        "latest": "v10",
-        "versions": ["v10"],
+        "latest": "v11",
+        "versions": ["v11", "v10"],
         "path": "javascript/nestjs"
       },
       {
@@ -48,6 +48,14 @@
         "latest": "v4",
         "versions": ["v4"],
         "path": "javascript/expressjs"
+      },
+      {
+        "name": "React",
+        "alias": ["react"],
+        "language": "javascript",
+        "latest": "v19",
+        "versions": ["v19"],
+        "path": "javascript/react"
       },
       {
         "name": "Django",

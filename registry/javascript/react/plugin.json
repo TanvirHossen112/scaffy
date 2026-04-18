@@ -1,0 +1,32 @@
+{
+  "name": "React",
+  "alias": ["react"],
+  "language": "javascript",
+  "latest": "v19",
+  "versions": ["v19"],
+  "description": "The library for web and native user interfaces. Uses Vite as the build engine via the official create-vite installer — always fresh, never stale.",
+  "requires": [
+    {
+      "tool": "node",
+      "checkCommand": "node --version",
+      "parseVersion": "v([0-9.]+)",
+      "minVersion": "18.0.0",
+      "installGuide": {
+        "mac": "brew install node",
+        "linux": "https://nodejs.org/en/download",
+        "windows": "https://nodejs.org/en/download",
+        "docs": "https://nodejs.org"
+      }
+    }
+  ],
+  "packageManagerQuestion": {
+    "tool": "packageManager",
+    "message": "Package manager:",
+    "choices": [
+      { "name": "npm",  "value": "npm",  "checkCommand": "npm --version" },
+      { "name": "yarn", "value": "yarn", "checkCommand": "yarn --version" },
+      { "name": "pnpm", "value": "pnpm", "checkCommand": "pnpm --version" }
+    ]
+  },
+  "maintainer": "community"
+}

@@ -3,7 +3,7 @@
   "alias": ["laravel"],
   "language": "php",
   "latest": "v13",
-  "versions": ["v13", "v12", "v11", "v10"],
+  "versions": ["v13", "v12", "v11"],
   "description": "The PHP Framework for Web Artisans",
   "requires": [
     {
