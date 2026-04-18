@@ -145,16 +145,16 @@ describe('Smoke Test — Laravel v11', () => {
 });
 
 // ─────────────────────────────────────────────────────
-// NESTJS V10 — FULL FLOW SMOKE TESTS
+// NESTJS V11 — FULL FLOW SMOKE TESTS
 // ─────────────────────────────────────────────────────
-describe('Smoke Test — NestJS v10', () => {
+describe('Smoke Test — NestJS v11', () => {
   test('plugin loads successfully', async () => {
-    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v11');
     expect(plugin).toHaveProperty('meta');
   });
 
   test('plugin has required fields', async () => {
-    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v11');
     expect(plugin).toHaveProperty('meta');
     expect(plugin).toHaveProperty('questions');
     expect(plugin).toHaveProperty('scaffold');
@@ -163,12 +163,12 @@ describe('Smoke Test — NestJS v10', () => {
   });
 
   test('questions is async function', async () => {
-    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v11');
     expect(typeof plugin.questions).toBe('function');
   });
 
   test('questions returns array when called', async () => {
-    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v10');
+    const { plugin } = await loadPluginWithMockExecutor('nestjs', 'v11');
     const questions = await plugin.questions();
     expect(Array.isArray(questions)).toBe(true);
     expect(questions.length).toBeGreaterThan(0);
@@ -177,7 +177,7 @@ describe('Smoke Test — NestJS v10', () => {
   test('full scaffold flow — default options', async () => {
     const { plugin, mock, utils } = await loadPluginWithMockExecutor(
       'nestjs',
-      'v10'
+      'v11'
     );
 
     await plugin.scaffold(
@@ -201,7 +201,7 @@ describe('Smoke Test — NestJS v10', () => {
   test('full scaffold flow — postgres + auth + docker', async () => {
     const { plugin, mock, utils } = await loadPluginWithMockExecutor(
       'nestjs',
-      'v10'
+      'v11'
     );
 
     await plugin.scaffold(
@@ -225,7 +225,7 @@ describe('Smoke Test — NestJS v10', () => {
   test('full scaffold flow — mongodb', async () => {
     const { plugin, mock, utils } = await loadPluginWithMockExecutor(
       'nestjs',
-      'v10'
+      'v11'
     );
 
     await plugin.scaffold(
@@ -371,7 +371,7 @@ describe('Smoke Test — Registry', () => {
     const framework = registry.findFramework('nestjs');
     expect(framework.name).toBe('NestJS');
     expect(framework.language).toBe('javascript');
-    expect(framework.latest).toBe('v10');
+    expect(framework.latest).toBe('v11');
   });
 
   test('vue has correct metadata', () => {
